@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-        <script>
+    <script>
         tailwind.config = {
             theme: {
                 screens: {
@@ -148,30 +148,45 @@
         <!-- Mobile Header Bar -->
         <div class="px-6 md:px-12 py-4 max-w-screen-2xl mx-auto flex items-center justify-between lg:hidden">
             <span class="text-white font-bold tracking-wide">The Omniverse Database</span>
-            <button id="mobileMenuBtn" class="text-white p-2 focus:outline-none hover:bg-[#2c2c2e] rounded-xl transition-colors">
+            <button id="mobileMenuBtn"
+                class="text-white p-2 focus:outline-none hover:bg-[#2c2c2e] rounded-xl transition-colors">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
             </button>
         </div>
 
         <!-- Collapsible Menu Content / Desktop Row -->
-        <div id="mobileMenuContent" class="hidden lg:flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 lg:gap-8 w-full max-w-screen-2xl mx-auto px-6 md:px-12 py-6 lg:py-4 absolute lg:static top-full left-0 glass-nav lg:bg-transparent shadow-2xl lg:shadow-none border-b border-apple-border lg:border-none z-40 max-h-[calc(100vh-70px)] overflow-y-auto lg:overflow-visible lg:max-h-none">
-            
+        <div id="mobileMenuContent"
+            class="hidden lg:flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 lg:gap-8 w-full max-w-screen-2xl mx-auto px-6 md:px-12 py-6 lg:py-4 absolute lg:static top-full left-0 glass-nav lg:bg-transparent shadow-2xl lg:shadow-none border-b border-apple-border lg:border-none z-40 max-h-[calc(100vh-70px)] overflow-y-auto lg:overflow-visible lg:max-h-none">
+
             <!-- Tabs Group -->
-            <div class="w-full lg:w-auto flex flex-col lg:flex-row justify-start lg:justify-start lg:overflow-x-auto hide-scroll shrink-0">
-                <div class="bg-apple-card border border-apple-border p-2 lg:p-1.5 rounded-2xl lg:rounded-full flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-max">
-                    <a href="index.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel Movies</a>
-                <a href="marvel-comics.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel Comics</a>
-                <a href="dc-movies.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">DC Movies</a>
-                <a href="dc-comics.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC Comics</a>
+            <div
+                class="w-full lg:w-auto flex flex-col lg:flex-row justify-start lg:justify-start lg:overflow-x-auto hide-scroll shrink-0">
+                <div
+                    class="bg-apple-card border border-apple-border p-2 lg:p-1.5 rounded-2xl lg:rounded-full flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-max">
+                    <a href="index.html"
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
+                        Movies</a>
+                    <a href="marvel-comics.html"
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
+                        Comics</a>
+                    <a href="dc-movies.html"
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">DC
+                        Movies</a>
+                    <a href="dc-comics.html"
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC
+                        Comics</a>
                 </div>
             </div>
 
             <!-- Controls Group (Search + Filters) -->
-            <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-start lg:justify-end gap-4 lg:gap-3 w-full lg:w-auto">
-                
+            <div
+                class="flex flex-col lg:flex-row items-stretch lg:items-center justify-start lg:justify-end gap-4 lg:gap-3 w-full lg:w-auto">
+
                 <!-- Apple-style Search Bar -->
                 <div class="relative w-full lg:w-[320px] 2xl:w-[400px] shrink-0 group">
                     <svg class="absolute left-4 lg:left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-apple-muted group-focus-within:text-white transition-colors"
@@ -184,31 +199,44 @@
                 </div>
 
                 <!-- Custom Segmented Filters -->
-                <div class="flex flex-col sm:flex-row lg:flex-row flex-wrap items-stretch sm:items-center justify-start lg:justify-center gap-3 lg:gap-2 w-full lg:w-auto relative z-50">
-                    
+                <div
+                    class="flex flex-col sm:flex-row lg:flex-row flex-wrap items-stretch sm:items-center justify-start lg:justify-center gap-3 lg:gap-2 w-full lg:w-auto relative z-50">
+
                     <!-- Custom Act Dropdown -->
                     <div class="relative w-full sm:w-auto" id="actDropdownContainer">
                         <button id="actDropdownBtn"
                             class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
                             <span id="actDropdownText">All Timelines</span>
-                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
                                 </path>
                             </svg>
                         </button>
                         <div id="actDropdownMenu"
                             class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-56 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
                             <ul class="py-1 text-base lg:text-sm text-white font-medium">
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="All">All Timelines</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="The Foundations">The Foundations</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Cinematic Pioneers">Cinematic Pioneers</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="DC Animated Universe">DC Animated Universe</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Standalone & Dark Knight">Standalone & Dark Knight</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="The Arrowverse">The Arrowverse</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="DC Extended Universe">DC Extended Universe</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Animated Multiverses">Animated Multiverses</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Modern Elseworlds">Modern Elseworlds</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="DC Studios (New DCU)">DC Studios (New DCU)</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="All">All Timelines</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="The Foundations">The Foundations</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Cinematic Pioneers">Cinematic Pioneers</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="DC Animated Universe">DC Animated Universe</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Standalone & Dark Knight">Standalone & Dark Knight</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="The Arrowverse">The Arrowverse</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="DC Extended Universe">DC Extended Universe</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Animated Multiverses">Animated Multiverses</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Modern Elseworlds">Modern Elseworlds</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="DC Studios (New DCU)">DC Studios (New DCU)</li>
                             </ul>
                         </div>
                     </div>
@@ -218,26 +246,36 @@
                         <button id="platformDropdownBtn"
                             class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
                             <span id="platformDropdownText">All Platforms</span>
-                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7">
                                 </path>
                             </svg>
                         </button>
                         <div id="platformDropdownMenu"
                             class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-48 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
                             <ul class="py-1 text-base lg:text-sm text-white font-medium">
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="All">All Platforms</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Disney+ Hotstar">Disney+ Hotstar</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Netflix">Netflix</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Prime Video">Prime Video</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="SonyLIV">SonyLIV</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="JioCinema">JioCinema</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="All">All Platforms</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Disney+ Hotstar">Disney+ Hotstar</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Netflix">Netflix</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Prime Video">Prime Video</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="SonyLIV">SonyLIV</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="JioCinema">JioCinema</li>
                             </ul>
                         </div>
                     </div>
 
-                    <label class="flex items-center gap-3 lg:gap-2 cursor-pointer bg-apple-card border border-apple-border rounded-2xl lg:rounded-full px-5 py-3.5 lg:py-2.5 hover:bg-[#2c2c2e] transition-colors w-full sm:w-auto justify-center sm:justify-start">
-                        <input type="checkbox" id="requiredFilter" class="accent-apple-blue w-5 h-5 lg:w-4 lg:h-4 rounded">
+                    <label
+                        class="flex items-center gap-3 lg:gap-2 cursor-pointer bg-apple-card border border-apple-border rounded-2xl lg:rounded-full px-5 py-3.5 lg:py-2.5 hover:bg-[#2c2c2e] transition-colors w-full sm:w-auto justify-center sm:justify-start">
+                        <input type="checkbox" id="requiredFilter"
+                            class="accent-apple-blue w-5 h-5 lg:w-4 lg:h-4 rounded">
                         <span class="text-base lg:text-sm font-medium text-white">Required Only</span>
                     </label>
                 </div>
@@ -246,12 +284,14 @@
     </nav>
 
     <header class="pt-12 pb-8 px-6 md:px-12 max-w-screen-2xl mx-auto">
-        <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-apple-text via-apple-text to-apple-muted tracking-tighter mb-4">THE OMNIVERSE DATABASE</h1>
+        <h1
+            class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-apple-text via-apple-text to-apple-muted tracking-tighter mb-4">
+            THE OMNIVERSE DATABASE</h1>
     </header>
 
-    
 
-    
+
+
 
     <main class="px-6 md:px-12 max-w-screen-2xl mx-auto">
         <!-- Progress Tracker -->
@@ -354,1186 +394,1186 @@
     <script>
         // Uncut, massive array containing all 160+ items
         const watchData = [
-          {
-                    "act": "The Foundations",
-                    "t": "Batman",
-                    "y": "1943",
-                    "ty": "Theatrical Serial",
-                    "u": "Earth-Unknown",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Foundations",
-                    "t": "Batman and Robin",
-                    "y": "1949",
-                    "ty": "Theatrical Serial",
-                    "u": "Earth-Unknown",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Foundations",
-                    "t": "Adventures of Superman",
-                    "y": "1952",
-                    "ty": "Series",
-                    "u": "Earth-Unknown",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Foundations",
-                    "t": "Batman '66",
-                    "y": "1966",
-                    "ty": "Series",
-                    "u": "Earth-66",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Foundations",
-                    "t": "Batman '66 Movie",
-                    "y": "1966",
-                    "ty": "Movie",
-                    "u": "Earth-66",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Foundations",
-                    "t": "Wonder Woman",
-                    "y": "1975",
-                    "ty": "Series",
-                    "u": "Earth-76",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman: The Movie",
-                    "y": "1978",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman II",
-                    "y": "1980",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman II: The Richard Donner Cut",
-                    "y": "2006",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman III",
-                    "y": "1983",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": false,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Supergirl",
-                    "y": "1984",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": false,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman IV: The Quest for Peace",
-                    "y": "1987",
-                    "ty": "Movie",
-                    "u": "Earth-78",
-                    "rq": false,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Superman Returns",
-                    "y": "2006",
-                    "ty": "Movie",
-                    "u": "Earth-96",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Batman",
-                    "y": "1989",
-                    "ty": "Movie",
-                    "u": "Earth-89",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Batman Returns",
-                    "y": "1992",
-                    "ty": "Movie",
-                    "u": "Earth-89",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Batman Forever",
-                    "y": "1995",
-                    "ty": "Movie",
-                    "u": "Earth-89",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Cinematic Pioneers",
-                    "t": "Batman & Robin",
-                    "y": "1997",
-                    "ty": "Movie",
-                    "u": "Earth-89",
-                    "rq": false,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Batman: The Animated Series",
-                    "y": "1992",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Batman: Mask of the Phantasm",
-                    "y": "1993",
-                    "ty": "Movie",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Superman: The Animated Series",
-                    "y": "1996",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "The New Batman Adventures",
-                    "y": "1997",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Batman Beyond",
-                    "y": "1999",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Batman Beyond: Return of the Joker",
-                    "y": "2000",
-                    "ty": "Movie",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Static Shock",
-                    "y": "2000",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "The Zeta Project",
-                    "y": "2001",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Justice League",
-                    "y": "2001",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Justice League Unlimited",
-                    "y": "2004",
-                    "ty": "Series",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "Batman and Harley Quinn",
-                    "y": "2017",
-                    "ty": "Movie",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Animated Universe",
-                    "t": "JL vs the Fatal Five",
-                    "y": "2019",
-                    "ty": "Movie",
-                    "u": "Earth-12",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Batman Begins",
-                    "y": "2005",
-                    "ty": "Movie",
-                    "u": "Earth-Nolan",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "The Dark Knight",
-                    "y": "2008",
-                    "ty": "Movie",
-                    "u": "Earth-Nolan",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "The Dark Knight Rises",
-                    "y": "2012",
-                    "ty": "Movie",
-                    "u": "Earth-Nolan",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Watchmen",
-                    "y": "2009",
-                    "ty": "Movie",
-                    "u": "Earth-Watchmen",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Watchmen (HBO)",
-                    "y": "2019",
-                    "ty": "Series",
-                    "u": "Earth-Watchmen",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Constantine",
-                    "y": "2005",
-                    "ty": "Movie",
-                    "u": "Elseworlds",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "V for Vendetta",
-                    "y": "2005",
-                    "ty": "Movie",
-                    "u": "Elseworlds",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Swamp Thing",
-                    "y": "1982",
-                    "ty": "Movie",
-                    "u": "Elseworlds",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Swamp Thing Returns",
-                    "y": "1989",
-                    "ty": "Movie",
-                    "u": "Elseworlds",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Lucifer",
-                    "y": "2016",
-                    "ty": "Series",
-                    "u": "Earth-666",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "The Sandman",
-                    "y": "2022",
-                    "ty": "Series",
-                    "u": "Vertigo",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Preacher",
-                    "y": "2016",
-                    "ty": "Series",
-                    "u": "Vertigo",
-                    "rq": true,
-                    "ott": [
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Smallville",
-                    "y": "2001",
-                    "ty": "Series",
-                    "u": "Earth-167",
-                    "rq": true,
-                    "ott": [
-                              "Prime Video",
-                              "Hulu"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Gotham",
-                    "y": "2014",
-                    "ty": "Series",
-                    "u": "Earth-Gotham",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Pennyworth",
-                    "y": "2019",
-                    "ty": "Series",
-                    "u": "Earth-Gotham",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Standalone & Dark Knight",
-                    "t": "Krypton",
-                    "y": "2018",
-                    "ty": "Series",
-                    "u": "Earth-Krypton",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Arrow",
-                    "y": "2012",
-                    "ty": "Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "The Flash",
-                    "y": "2014",
-                    "ty": "Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Constantine",
-                    "y": "2014",
-                    "ty": "Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Supergirl",
-                    "y": "2015",
-                    "ty": "Series",
-                    "u": "Earth-38",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Vixen",
-                    "y": "2015",
-                    "ty": "Web Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "CW Seed"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Legends of Tomorrow",
-                    "y": "2016",
-                    "ty": "Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Invasion! Crossover",
-                    "y": "2016",
-                    "ty": "Crossover",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Crisis on Earth-X",
-                    "y": "2017",
-                    "ty": "Crossover",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Black Lightning",
-                    "y": "2018",
-                    "ty": "Series",
-                    "u": "Earth-BlackLightning",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Elseworlds Crossover",
-                    "y": "2018",
-                    "ty": "Crossover",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Netflix"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Batwoman",
-                    "y": "2019",
-                    "ty": "Series",
-                    "u": "Earth-1",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Crisis on Infinite Earths",
-                    "y": "2019",
-                    "ty": "Crossover",
-                    "u": "Multiverse",
-                    "rq": true,
-                    "ott": [
-                              "Netflix",
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Post-Crisis Arrowverse",
-                    "y": "2020",
-                    "ty": "Series",
-                    "u": "Earth-Prime",
-                    "rq": false,
-                    "ott": [
-                              "Netflix",
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Superman & Lois",
-                    "y": "2021",
-                    "ty": "Series",
-                    "u": "Earth-Standalone",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Stargirl",
-                    "y": "2020",
-                    "ty": "Series",
-                    "u": "Earth-2",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "The Arrowverse",
-                    "t": "Naomi",
-                    "y": "2022",
-                    "ty": "Series",
-                    "u": "Earth-Naomi",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Man of Steel",
-                    "y": "2013",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Batman v Superman",
-                    "y": "2016",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Suicide Squad",
-                    "y": "2016",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Wonder Woman",
-                    "y": "2017",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Zack Snyder's Justice League",
-                    "y": "2021",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Aquaman",
-                    "y": "2018",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Shazam!",
-                    "y": "2019",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Birds of Prey",
-                    "y": "2020",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Wonder Woman 1984",
-                    "y": "2020",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "The Suicide Squad",
-                    "y": "2021",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Peacemaker",
-                    "y": "2022",
-                    "ty": "Series",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Black Adam",
-                    "y": "2022",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Shazam! Fury of the Gods",
-                    "y": "2023",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": false,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "The Flash",
-                    "y": "2023",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Blue Beetle",
-                    "y": "2023",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Extended Universe",
-                    "t": "Aquaman and the Lost Kingdom",
-                    "y": "2023",
-                    "ty": "Movie",
-                    "u": "DCEU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "The Flashpoint Paradox",
-                    "y": "2013",
-                    "ty": "Movie",
-                    "u": "DCAMU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "The DCAMU Saga",
-                    "y": "2014",
-                    "ty": "Movies",
-                    "u": "DCAMU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Justice League Dark: Apokolips War",
-                    "y": "2020",
-                    "ty": "Movie",
-                    "u": "DCAMU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "The Tomorrowverse Saga",
-                    "y": "2020",
-                    "ty": "Movies",
-                    "u": "Tomorrowverse",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Justice League: Crisis on Infinite Earths",
-                    "y": "2024",
-                    "ty": "Movies",
-                    "u": "Tomorrowverse",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "DC Animated Masterpieces",
-                    "y": "1993",
-                    "ty": "Movies",
-                    "u": "Elseworlds",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Teen Titans",
-                    "y": "2003",
-                    "ty": "Series",
-                    "u": "Earth-TeenTitans",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Teen Titans Go!",
-                    "y": "2013",
-                    "ty": "Series",
-                    "u": "Earth-TeenTitansGo",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Young Justice",
-                    "y": "2010",
-                    "ty": "Series",
-                    "u": "Earth-16",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Green Lantern: The Animated Series",
-                    "y": "2011",
-                    "ty": "Series",
-                    "u": "Earth-GL",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Harley Quinn",
-                    "y": "2019",
-                    "ty": "Series",
-                    "u": "Elseworlds",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "Batman Animations",
-                    "y": "2004",
-                    "ty": "Series",
-                    "u": "Various",
-                    "rq": true,
-                    "ott": [
-                              "Max",
-                              "Prime Video"
-                    ]
-          },
-          {
-                    "act": "Animated Multiverses",
-                    "t": "My Adventures with Superman",
-                    "y": "2023",
-                    "ty": "Series",
-                    "u": "Elseworlds",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Modern Elseworlds",
-                    "t": "Joker",
-                    "y": "2019",
-                    "ty": "Movie",
-                    "u": "Earth-Phillips",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Modern Elseworlds",
-                    "t": "Joker: Folie à Deux",
-                    "y": "2024",
-                    "ty": "Movie",
-                    "u": "Earth-Phillips",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Modern Elseworlds",
-                    "t": "The Batman",
-                    "y": "2022",
-                    "ty": "Movie",
-                    "u": "Earth-Reeves",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "Modern Elseworlds",
-                    "t": "The Penguin",
-                    "y": "2024",
-                    "ty": "Series",
-                    "u": "Earth-Reeves",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Creature Commandos",
-                    "y": "2024",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Superman",
-                    "y": "2025",
-                    "ty": "Movie",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Theaters"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Peacemaker (Season 2)",
-                    "y": "2025",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Lanterns",
-                    "y": "TBA",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "HBO"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Supergirl: Woman of Tomorrow",
-                    "y": "2026",
-                    "ty": "Movie",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Theaters"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "The Authority",
-                    "y": "TBA",
-                    "ty": "Movie",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Theaters"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "The Brave and the Bold",
-                    "y": "TBA",
-                    "ty": "Movie",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Theaters"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Swamp Thing",
-                    "y": "TBA",
-                    "ty": "Movie",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Theaters"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Paradise Lost",
-                    "y": "TBA",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "HBO"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Booster Gold",
-                    "y": "TBA",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          },
-          {
-                    "act": "DC Studios (New DCU)",
-                    "t": "Waller",
-                    "y": "TBA",
-                    "ty": "Series",
-                    "u": "DCU",
-                    "rq": true,
-                    "ott": [
-                              "Max"
-                    ]
-          }
-];
+            {
+                "act": "The Foundations",
+                "t": "Batman",
+                "y": "1943",
+                "ty": "Theatrical Serial",
+                "u": "Earth-Unknown",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Foundations",
+                "t": "Batman and Robin",
+                "y": "1949",
+                "ty": "Theatrical Serial",
+                "u": "Earth-Unknown",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Foundations",
+                "t": "Adventures of Superman",
+                "y": "1952",
+                "ty": "Series",
+                "u": "Earth-Unknown",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Foundations",
+                "t": "Batman '66",
+                "y": "1966",
+                "ty": "Series",
+                "u": "Earth-66",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Foundations",
+                "t": "Batman '66 Movie",
+                "y": "1966",
+                "ty": "Movie",
+                "u": "Earth-66",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Foundations",
+                "t": "Wonder Woman",
+                "y": "1975",
+                "ty": "Series",
+                "u": "Earth-76",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman: The Movie",
+                "y": "1978",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman II",
+                "y": "1980",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman II: The Richard Donner Cut",
+                "y": "2006",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman III",
+                "y": "1983",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": false,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Supergirl",
+                "y": "1984",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": false,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman IV: The Quest for Peace",
+                "y": "1987",
+                "ty": "Movie",
+                "u": "Earth-78",
+                "rq": false,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Superman Returns",
+                "y": "2006",
+                "ty": "Movie",
+                "u": "Earth-96",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Batman",
+                "y": "1989",
+                "ty": "Movie",
+                "u": "Earth-89",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Batman Returns",
+                "y": "1992",
+                "ty": "Movie",
+                "u": "Earth-89",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Batman Forever",
+                "y": "1995",
+                "ty": "Movie",
+                "u": "Earth-89",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Cinematic Pioneers",
+                "t": "Batman & Robin",
+                "y": "1997",
+                "ty": "Movie",
+                "u": "Earth-89",
+                "rq": false,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Batman: The Animated Series",
+                "y": "1992",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Batman: Mask of the Phantasm",
+                "y": "1993",
+                "ty": "Movie",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Superman: The Animated Series",
+                "y": "1996",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "The New Batman Adventures",
+                "y": "1997",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Batman Beyond",
+                "y": "1999",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Batman Beyond: Return of the Joker",
+                "y": "2000",
+                "ty": "Movie",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Static Shock",
+                "y": "2000",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "The Zeta Project",
+                "y": "2001",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Justice League",
+                "y": "2001",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Justice League Unlimited",
+                "y": "2004",
+                "ty": "Series",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "Batman and Harley Quinn",
+                "y": "2017",
+                "ty": "Movie",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Animated Universe",
+                "t": "JL vs the Fatal Five",
+                "y": "2019",
+                "ty": "Movie",
+                "u": "Earth-12",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Batman Begins",
+                "y": "2005",
+                "ty": "Movie",
+                "u": "Earth-Nolan",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "The Dark Knight",
+                "y": "2008",
+                "ty": "Movie",
+                "u": "Earth-Nolan",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "The Dark Knight Rises",
+                "y": "2012",
+                "ty": "Movie",
+                "u": "Earth-Nolan",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Watchmen",
+                "y": "2009",
+                "ty": "Movie",
+                "u": "Earth-Watchmen",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Watchmen (HBO)",
+                "y": "2019",
+                "ty": "Series",
+                "u": "Earth-Watchmen",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Constantine",
+                "y": "2005",
+                "ty": "Movie",
+                "u": "Elseworlds",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "V for Vendetta",
+                "y": "2005",
+                "ty": "Movie",
+                "u": "Elseworlds",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Swamp Thing",
+                "y": "1982",
+                "ty": "Movie",
+                "u": "Elseworlds",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Swamp Thing Returns",
+                "y": "1989",
+                "ty": "Movie",
+                "u": "Elseworlds",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Lucifer",
+                "y": "2016",
+                "ty": "Series",
+                "u": "Earth-666",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "The Sandman",
+                "y": "2022",
+                "ty": "Series",
+                "u": "Vertigo",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Preacher",
+                "y": "2016",
+                "ty": "Series",
+                "u": "Vertigo",
+                "rq": true,
+                "ott": [
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Smallville",
+                "y": "2001",
+                "ty": "Series",
+                "u": "Earth-167",
+                "rq": true,
+                "ott": [
+                    "Prime Video",
+                    "Hulu"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Gotham",
+                "y": "2014",
+                "ty": "Series",
+                "u": "Earth-Gotham",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Pennyworth",
+                "y": "2019",
+                "ty": "Series",
+                "u": "Earth-Gotham",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Standalone & Dark Knight",
+                "t": "Krypton",
+                "y": "2018",
+                "ty": "Series",
+                "u": "Earth-Krypton",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Arrow",
+                "y": "2012",
+                "ty": "Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "The Flash",
+                "y": "2014",
+                "ty": "Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Constantine",
+                "y": "2014",
+                "ty": "Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Supergirl",
+                "y": "2015",
+                "ty": "Series",
+                "u": "Earth-38",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Vixen",
+                "y": "2015",
+                "ty": "Web Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "CW Seed"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Legends of Tomorrow",
+                "y": "2016",
+                "ty": "Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Invasion! Crossover",
+                "y": "2016",
+                "ty": "Crossover",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Crisis on Earth-X",
+                "y": "2017",
+                "ty": "Crossover",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Black Lightning",
+                "y": "2018",
+                "ty": "Series",
+                "u": "Earth-BlackLightning",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Elseworlds Crossover",
+                "y": "2018",
+                "ty": "Crossover",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Netflix"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Batwoman",
+                "y": "2019",
+                "ty": "Series",
+                "u": "Earth-1",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Crisis on Infinite Earths",
+                "y": "2019",
+                "ty": "Crossover",
+                "u": "Multiverse",
+                "rq": true,
+                "ott": [
+                    "Netflix",
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Post-Crisis Arrowverse",
+                "y": "2020",
+                "ty": "Series",
+                "u": "Earth-Prime",
+                "rq": false,
+                "ott": [
+                    "Netflix",
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Superman & Lois",
+                "y": "2021",
+                "ty": "Series",
+                "u": "Earth-Standalone",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Stargirl",
+                "y": "2020",
+                "ty": "Series",
+                "u": "Earth-2",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "The Arrowverse",
+                "t": "Naomi",
+                "y": "2022",
+                "ty": "Series",
+                "u": "Earth-Naomi",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Man of Steel",
+                "y": "2013",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Batman v Superman",
+                "y": "2016",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Suicide Squad",
+                "y": "2016",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Wonder Woman",
+                "y": "2017",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Zack Snyder's Justice League",
+                "y": "2021",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Aquaman",
+                "y": "2018",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Shazam!",
+                "y": "2019",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Birds of Prey",
+                "y": "2020",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Wonder Woman 1984",
+                "y": "2020",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "The Suicide Squad",
+                "y": "2021",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Peacemaker",
+                "y": "2022",
+                "ty": "Series",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Black Adam",
+                "y": "2022",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Shazam! Fury of the Gods",
+                "y": "2023",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": false,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "The Flash",
+                "y": "2023",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Blue Beetle",
+                "y": "2023",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Extended Universe",
+                "t": "Aquaman and the Lost Kingdom",
+                "y": "2023",
+                "ty": "Movie",
+                "u": "DCEU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "The Flashpoint Paradox",
+                "y": "2013",
+                "ty": "Movie",
+                "u": "DCAMU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "The DCAMU Saga",
+                "y": "2014",
+                "ty": "Movies",
+                "u": "DCAMU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Justice League Dark: Apokolips War",
+                "y": "2020",
+                "ty": "Movie",
+                "u": "DCAMU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "The Tomorrowverse Saga",
+                "y": "2020",
+                "ty": "Movies",
+                "u": "Tomorrowverse",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Justice League: Crisis on Infinite Earths",
+                "y": "2024",
+                "ty": "Movies",
+                "u": "Tomorrowverse",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "DC Animated Masterpieces",
+                "y": "1993",
+                "ty": "Movies",
+                "u": "Elseworlds",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Teen Titans",
+                "y": "2003",
+                "ty": "Series",
+                "u": "Earth-TeenTitans",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Teen Titans Go!",
+                "y": "2013",
+                "ty": "Series",
+                "u": "Earth-TeenTitansGo",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Young Justice",
+                "y": "2010",
+                "ty": "Series",
+                "u": "Earth-16",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Green Lantern: The Animated Series",
+                "y": "2011",
+                "ty": "Series",
+                "u": "Earth-GL",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Harley Quinn",
+                "y": "2019",
+                "ty": "Series",
+                "u": "Elseworlds",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "Batman Animations",
+                "y": "2004",
+                "ty": "Series",
+                "u": "Various",
+                "rq": true,
+                "ott": [
+                    "Max",
+                    "Prime Video"
+                ]
+            },
+            {
+                "act": "Animated Multiverses",
+                "t": "My Adventures with Superman",
+                "y": "2023",
+                "ty": "Series",
+                "u": "Elseworlds",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Modern Elseworlds",
+                "t": "Joker",
+                "y": "2019",
+                "ty": "Movie",
+                "u": "Earth-Phillips",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Modern Elseworlds",
+                "t": "Joker: Folie à Deux",
+                "y": "2024",
+                "ty": "Movie",
+                "u": "Earth-Phillips",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Modern Elseworlds",
+                "t": "The Batman",
+                "y": "2022",
+                "ty": "Movie",
+                "u": "Earth-Reeves",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "Modern Elseworlds",
+                "t": "The Penguin",
+                "y": "2024",
+                "ty": "Series",
+                "u": "Earth-Reeves",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Creature Commandos",
+                "y": "2024",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Superman",
+                "y": "2025",
+                "ty": "Movie",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Peacemaker (Season 2)",
+                "y": "2025",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Lanterns",
+                "y": "TBA",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "HBO"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Supergirl: Woman of Tomorrow",
+                "y": "2026",
+                "ty": "Movie",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "The Authority",
+                "y": "TBA",
+                "ty": "Movie",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "The Brave and the Bold",
+                "y": "TBA",
+                "ty": "Movie",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Swamp Thing",
+                "y": "TBA",
+                "ty": "Movie",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Paradise Lost",
+                "y": "TBA",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "HBO"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Booster Gold",
+                "y": "TBA",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            },
+            {
+                "act": "DC Studios (New DCU)",
+                "t": "Waller",
+                "y": "TBA",
+                "ty": "Series",
+                "u": "DCU",
+                "rq": true,
+                "ott": [
+                    "Max"
+                ]
+            }
+        ];
 
-        
+
         const gradClasses = ["grad-616", "grad-10005", "grad-96283", "grad-120703", "grad-688", "grad-1610", "grad-legacy"];
         function getRandomGradient(id) {
             let hash = 0;
             for (let i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
             return gradClasses[Math.abs(hash) % gradClasses.length];
         }
-        
+
         function getGradientClass(universe) {
             if (universe.includes("616")) return "grad-616";
             if (universe.includes("10005")) return "grad-10005";
@@ -1857,7 +1897,7 @@
         renderCards();
     </script>
 
-    
+
     <script>
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuContent = document.getElementById('mobileMenuContent');
@@ -1870,7 +1910,7 @@
                 mobileMenuContent.classList.toggle('flex');
                 hamburgerIcon.classList.toggle('hidden');
                 closeIcon.classList.toggle('hidden');
-                
+
                 if (!mobileMenuContent.classList.contains('hidden')) {
                     document.body.style.overflow = 'hidden';
                 } else {
