@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Omniverse | Marvel Archive</title>
+    <title>Omniverse | ASOIAF Archive</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,7 +99,7 @@
             display: none;
         }
 
-        /* Generative Mesh Gradients for Universes */
+        /* Generative Mesh Gradients for Houses & Regions */
         .grad-616 {
             background: linear-gradient(135deg, #7f00ff, #e100ff);
         }
@@ -169,7 +169,7 @@
                 <div
                     class="bg-apple-card border border-apple-border p-2 lg:p-1.5 rounded-2xl lg:rounded-full flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-max">
                     <a href="index.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">Marvel
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
                         Movies</a>
                     <a href="marvel-comics.html"
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
@@ -184,7 +184,7 @@
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
                         Books</a>
                     <a href="asoiaf-screen.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">ASOIAF
                         Screen</a>
                 </div>
             </div>
@@ -200,7 +200,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Search movies, series, or universes..."
+                    <input type="text" id="searchInput" placeholder="Search series, documentaries, or houses..."
                         class="w-full bg-apple-card border border-transparent rounded-2xl lg:rounded-full pl-12 lg:pl-10 pr-4 py-3.5 lg:py-2.5 text-base lg:text-sm text-white focus:outline-none focus:border-apple-blue focus:bg-apple-bg focus:ring-4 focus:ring-apple-blue/20 transition-all placeholder-apple-muted">
                 </div>
 
@@ -226,15 +226,21 @@
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Timelines</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Progenitors">Progenitors</li>
+                                    data-value="The Long Night">The Long Night</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Legacy">Legacy</li>
+                                    data-value="Andal Invasion">Andal Invasion</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Infinity Saga">Infinity Saga</li>
+                                    data-value="Valyrian Freehold">Valyrian Freehold</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Spider-Verse">Spider-Verse</li>
+                                    data-value="Aegon's Conquest">Aegon's Conquest</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Multiverse Saga">Multiverse Saga</li>
+                                    data-value="Dance of the Dragons">Dance of the Dragons</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Dunk & Egg Era">Dunk & Egg Era</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="War of the Five Kings">War of the Five Kings</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Age of Heroes">Age of Heroes</li>
                             </ul>
                         </div>
                     </div>
@@ -257,21 +263,9 @@
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Platforms</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Disney+ Hotstar">Disney+ Hotstar</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Netflix">Netflix</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Prime Video">Prime Video</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Apple TV">Apple TV</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="YouTube">YouTube</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="SonyLIV">SonyLIV</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="JioCinema">JioCinema</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Lionsgate Play">Lionsgate Play</li>
+                                    data-value="Blu-ray/Digital">Blu-ray/Digital</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="Theaters">Theaters</li>
                             </ul>
@@ -398,203 +392,189 @@
     </div>
 
     <script>
-        // Uncut, massive array containing all 160+ items
+        // ASOIAF screen canon: series, documentaries, prequels, and shelved projects
         const watchData = [
-            // ACT I
-            { act: "Progenitors", t: "Spider-Man", y: "1977", ty: "TV Movie/Pilot", u: "Earth-730911", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-1977.webp" },
-            { act: "Progenitors", t: "Dr. Strange", y: "1978", ty: "TV Movie", u: "Earth-96173", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/dr-strange-1978.webp" },
-            { act: "Progenitors", t: "Captain America & II: Death Too Soon", y: "1979", ty: "TV Movies", u: "Earth-600043", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/captain-america-and-II-death-too-soon-1979.webp" },
-            { act: "Progenitors", t: "Howard the Duck", y: "1986", ty: "Movie", u: "Earth-58470", rq: false, ott: ["Apple TV (Rent)", "Prime Video (Rent)"], img: "marvel-movies-poster/howard-the-duck-1986.webp" },
-            { act: "Progenitors", t: "The Punisher", y: "1989", ty: "Movie", u: "Earth-58627", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/the-punisher-1989.webp" },
-            { act: "Progenitors", t: "Captain America", y: "1990", ty: "Movie", u: "Earth-1990", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/captain-america-1990.webp" },
-            { act: "Progenitors", t: "The Fantastic Four (Unreleased)", y: "1994", ty: "Movie", u: "Earth-94000", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/the-fantastic-four-1994.webp" },
-            { act: "Progenitors", t: "Generation X", y: "1996", ty: "TV Movie", u: "Earth-700029", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/generation-x-1996.webp" },
-            { act: "Progenitors", t: "Nick Fury: Agent of S.H.I.E.L.D.", y: "1998", ty: "TV Movie", u: "Earth-700089", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/nick-fury-agent-of-s.h.i.e.l.d-1998.webp" },
-            { act: "Progenitors", t: "Man-Thing", y: "2005", ty: "Movie", u: "Earth-400083", rq: false, ott: ["Apple TV (Rent)", "Prime Video (Rent)"], img: "marvel-movies-poster/man-thing-2005.webp" },
-            { act: "Progenitors", t: "Power Pack", y: "1991", ty: "Unaired Pilot", u: "Unknown", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/power-pack-1991.webp" },
-            { act: "Progenitors", t: "Spider-Man (Seasons 1-3)", y: "1967", ty: "Animation", u: "Earth-6799", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-season(1-to-3)-1967.webp" },
-            { act: "Progenitors", t: "Spider-Man & His Amazing Friends", y: "1981", ty: "Animation", u: "Earth-8107", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-man-and-his-amazing-friends-1981.webp" },
-            { act: "Progenitors", t: "X-Men: Pryde of the X-Men", y: "1989", ty: "Animation", u: "Earth-8107", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/x-men-pryde-of-the-x-men-1989.webp" },
-            { act: "Progenitors", t: "X-Men: The Animated Series (S1-5)", y: "1992", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-the-animated-series-season(1-to-5)-1992.webp" },
-            { act: "Progenitors", t: "Spider-Man: The Animated Series (S1-5)", y: "1994", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-am-the-animated-series-season(1-to-5)-1994.webp" },
-            { act: "Progenitors", t: "Spider-Man Unlimited", y: "1999", ty: "Animation", u: "Earth-751263", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-man-unlimited-1999.webp" },
-            { act: "Progenitors", t: "X-Men: Evolution", y: "2000", ty: "Animation", u: "Earth-11052", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/x-men-evolution-2000.webp" },
-            { act: "Progenitors", t: "Spider-Man: The New Animated Series", y: "2003", ty: "Animation", u: "Earth-760207", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-new-animated-series-2003.webp" },
-            { act: "Progenitors", t: "Wolverine and the X-Men", y: "2009", ty: "Animation", u: "Earth-80920", rq: false, ott: ["Prime Video", "Apple TV (Rent)"], img: "marvel-movies-poster/wolverine-and-the-x-men-2009.webp" },
-            { act: "Progenitors", t: "The Spectacular Spider-Man", y: "2008", ty: "Animation", u: "Earth-26496", rq: true, ott: ["SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-spectacular-spider-man-2008.webp" },
-            { act: "Progenitors", t: "The Avengers: Earth's Mightiest Heroes", y: "2010", ty: "Animation", u: "Earth-80920", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-avengers-earthe's-mightiest-heros-2010.webp" },
-            { act: "Progenitors", t: "Ultimate Spidey, Avengers Assemble, Hulk", y: "2012", ty: "Animation", u: "Earth-12041", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ultimate-spidey-avengers-assemble-hulk-2012.webp" },
-
-            // ACT II
-            { act: "Legacy", t: "Blade", y: "1998", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-1998.webp" },
-            { act: "Legacy", t: "Blade II", y: "2002", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-ll-2002.webp" },
-            { act: "Legacy", t: "Blade: Trinity", y: "2004", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-trinity-2004.webp" },
-            { act: "Legacy", t: "Daredevil", y: "2003", ty: "Movie", u: "Earth-701306", rq: true, ott: ["Disney+ Hotstar", "Prime Video"], img: "marvel-movies-poster/daredevil-2003.webp" },
-            { act: "Legacy", t: "Elektra", y: "2005", ty: "Movie", u: "Earth-701306", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/elektra-2005.webp" },
-            { act: "Legacy", t: "Hulk", y: "2003", ty: "Movie", u: "Earth-400083", rq: false, ott: ["Prime Video", "JioCinema"], img: "marvel-movies-poster/hulk-2003.webp" },
-            { act: "Legacy", t: "The Punisher", y: "2004", ty: "Movie", u: "Earth-58732", rq: false, ott: ["Prime Video", "Lionsgate Play"], img: "marvel-movies-poster/the-punisher-2004.webp" },
-            { act: "Legacy", t: "Punisher: War Zone", y: "2008", ty: "Movie", u: "Earth-12101", rq: false, ott: ["Prime Video", "Lionsgate Play"], img: "marvel-movies-poster/punisher-war-zone-2008.webp" },
-            { act: "Legacy", t: "Ghost Rider", y: "2007", ty: "Movie", u: "Earth-121347", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/ghost-rider-2007.webp" },
-            { act: "Legacy", t: "Ghost Rider: Spirit of Vengeance", y: "2011", ty: "Movie", u: "Earth-121347", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/ghost-rider-spirit-of-vengeance-2011.webp" },
-            { act: "Legacy", t: "Fantastic Four", y: "2005", ty: "Movie", u: "Earth-121698", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fantastic-four-2005.webp" },
-            { act: "Legacy", t: "Fantastic Four: Rise of the Silver Surfer", y: "2007", ty: "Movie", u: "Earth-121698", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fantastic-four-rise-of-the-silver-surfer-2007.webp" },
-            { act: "Legacy", t: "Fant4stic", y: "2015", ty: "Movie", u: "Earth-15866", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fant4stic-2015.webp" },
-            { act: "Legacy", t: "Spider-Man", y: "2002", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-2002.webp" },
-            { act: "Legacy", t: "Spider-Man 2", y: "2004", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-2-2004.webp" },
-            { act: "Legacy", t: "Spider-Man 3", y: "2007", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-3-2007.webp" },
-            { act: "Legacy", t: "The Amazing Spider-Man", y: "2012", ty: "Movie", u: "Earth-120703", rq: true, ott: ["Netflix", "SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-amazing-spider-man-2012.webp" },
-            { act: "Legacy", t: "The Amazing Spider-Man 2", y: "2014", ty: "Movie", u: "Earth-120703", rq: true, ott: ["Netflix", "SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-amazing-spider-man-2-2014.webp" },
-            { act: "Legacy", t: "X-Men: First Class", y: "2011", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-first-class-2011.webp" },
-            { act: "Legacy", t: "X-Men Origins: Wolverine", y: "2009", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-origins-wolverine-2009.webp" },
-            { act: "Legacy", t: "X-Men", y: "2000", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-2000.webp" },
-            { act: "Legacy", t: "X2: X-Men United", y: "2003", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x2-x-men-united-2003.webp" },
-            { act: "Legacy", t: "X-Men: The Last Stand", y: "2006", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men the-last-stand-2006.webp" },
-            { act: "Legacy", t: "The Wolverine", y: "2013", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-wolverine-2013.webp" },
-            { act: "Legacy", t: "X-Men: Days of Future Past", y: "2014", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-days-of-future-past-2014.webp" },
-            { act: "Legacy", t: "X-Men: Apocalypse", y: "2016", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men apocalypse-2016.webp" },
-            { act: "Legacy", t: "Dark Phoenix", y: "2019", ty: "Movie", u: "Earth-10005", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/dark-phoenix-2019.webp" },
-            { act: "Legacy", t: "The New Mutants", y: "2020", ty: "Movie", u: "Earth-10005", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-new-mutants-2020.webp" },
-            { act: "Legacy", t: "Logan", y: "2017", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/logan-2017.webp" },
-            { act: "Legacy", t: "Deadpool", y: "2016", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/deadpool-2016.webp" },
-            { act: "Legacy", t: "Deadpool 2", y: "2018", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/deadpool-2-2018.webp" },
-
-            // ACT III
-            { act: "Infinity Saga", t: "Captain America: The First Avenger", y: "2011", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-the-first-avenger-2011.webp" },
-            { act: "Infinity Saga", t: "Agent Carter (One-Shot)", y: "2013", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agent-carter(one-shot)-2013.webp" },
-            { act: "Infinity Saga", t: "Agent Carter (Seasons 1-2)", y: "2015", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agent-carter-2015.webp" },
-            { act: "Infinity Saga", t: "Captain Marvel", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-marvel-2019.webp" },
-            { act: "Infinity Saga", t: "Iron Man", y: "2008", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-2008.webp" },
-            { act: "Infinity Saga", t: "Iron Man 2", y: "2010", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-2-2010.webp" },
-            { act: "Infinity Saga", t: "The Incredible Hulk", y: "2008", ty: "Movie", u: "Earth-616", rq: true, ott: ["Prime Video", "Disney+ Hotstar"], img: "marvel-movies-poster/the-incredible-hulk-2008.webp" },
-            { act: "Infinity Saga", t: "A Funny Thing Happened...", y: "2011", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/a-funny-thing-happened...-2011.webp" },
-            { act: "Infinity Saga", t: "The Consultant", y: "2011", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-consultant-2011.webp" },
-            { act: "Infinity Saga", t: "Thor", y: "2011", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-2011.webp" },
-            { act: "Infinity Saga", t: "The Avengers", y: "2012", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-avengers-2012.webp" },
-            { act: "Infinity Saga", t: "Item 47", y: "2012", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/item-47-2012.webp" },
-            { act: "Infinity Saga", t: "Iron Man 3", y: "2013", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-3-2013.webp" },
-            { act: "Infinity Saga", t: "All Hail the King", y: "2014", ty: "Short", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/all-hail-the-king-2014.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 1-7)", y: "2013", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Thor: The Dark World", y: "2013", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-the-dark-world-2013.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 8-16)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Captain America: The Winter Soldier", y: "2014", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-the-winter-soldier-2014.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 17-22)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Guardians of the Galaxy", y: "2014", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardian-of-the-galaxy-2014.webp" },
-            { act: "Infinity Saga", t: "Guardians of the Galaxy Vol. 2", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardian-of-the-galaxy-vol-2-2017.webp" },
-            { act: "Infinity Saga", t: "I Am Groot (Seasons 1-2)", y: "2022", ty: "Shorts", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/i-am-groot-2022.webp" },
-            { act: "Infinity Saga", t: "Daredevil (Season 1)", y: "2015", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
-            { act: "Infinity Saga", t: "Jessica Jones (Season 1)", y: "2015", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S2 Eps 1-19)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Avengers: Age of Ultron", y: "2015", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-age-of-ultron-2015.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S2 Eps 20-22)", y: "2015", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Ant-Man", y: "2015", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-2015.webp" },
-            { act: "Infinity Saga", t: "Daredevil (Season 2)", y: "2016", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
-            { act: "Infinity Saga", t: "Luke Cage (Season 1)", y: "2016", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/luke-cage-2016.webp" },
-            { act: "Infinity Saga", t: "Iron Fist (Season 1)", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-fist-2017.webp" },
-            { act: "Infinity Saga", t: "The Defenders", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-defenders-2017.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S3 Eps 1-19)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Captain America: Civil War", y: "2016", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-civil-war-2016.webp" },
-            { act: "Infinity Saga", t: "WHIH Newsfront", y: "2015", ty: "Web Series", u: "Earth-616", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/whih-newsfront-2015.webp" },
-            { act: "Infinity Saga", t: "Black Widow", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-widow-2021.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S3 Eps 20-22)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Black Panther", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-panther-2018.webp" },
-            { act: "Infinity Saga", t: "Spider-Man: Homecoming", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-homecoming-2017.webp" },
-            { act: "Infinity Saga", t: "The Punisher (Season 1)", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-punisher-2017.webp" },
-            { act: "Infinity Saga", t: "Doctor Strange", y: "2016", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/doctor-strange-2016.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (Season 4)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Slingshot", y: "2016", ty: "Web Series", u: "Earth-616", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/slingshot-2016.webp" },
-            { act: "Infinity Saga", t: "Jessica Jones (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
-            { act: "Infinity Saga", t: "Luke Cage (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/luke-cage-2016.webp" },
-            { act: "Infinity Saga", t: "Iron Fist (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-fist-2017.webp" },
-            { act: "Infinity Saga", t: "Daredevil (Season 3)", y: "2018", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
-            { act: "Infinity Saga", t: "The Punisher (Season 2)", y: "2019", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-punisher-2017.webp" },
-            { act: "Infinity Saga", t: "Jessica Jones (Season 3)", y: "2019", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
-            { act: "Infinity Saga", t: "Inhumans", y: "2017", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/inhumans-2017.webp" },
-            { act: "Infinity Saga", t: "Runaways (Seasons 1-3)", y: "2017", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/runaways-2017.webp" },
-            { act: "Infinity Saga", t: "Cloak & Dagger (Seasons 1-2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/cloak-and-dagger-2018.webp" },
-            { act: "Infinity Saga", t: "Helstrom", y: "2020", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/helstrom-2020.webp" },
-            { act: "Infinity Saga", t: "Thor: Ragnarok", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-ragnarok-2017.webp" },
-            { act: "Infinity Saga", t: "Team Thor / Team Darryl", y: "2016", ty: "Shorts", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar", "YouTube"], img: "marvel-movies-poster/team-thor-team-darry-2016.webp" },
-            { act: "Infinity Saga", t: "Ant-Man and the Wasp", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-and-the-wasp-2018.webp" },
-            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (Seasons 5-7)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
-            { act: "Infinity Saga", t: "Avengers: Infinity War", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-infinity-war-2018.webp" },
-            { act: "Infinity Saga", t: "Avengers: Endgame", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-endgame-2019.webp" },
-
-            // ACT IV
-            { act: "Spider-Verse", t: "Venom", y: "2018", ty: "Movie", u: "Earth-688", rq: true, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/venom-2018.webp" },
-            { act: "Spider-Verse", t: "Spider-Man: Into the Spider-Verse", y: "2018", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Prime Video", "SonyLIV"], img: "marvel-movies-poster/spider-man-into-the-spider-verse-2018.webp" },
-            { act: "Spider-Verse", t: "Spider-Ham: Caught in a Ham", y: "2019", ty: "Short", u: "Earth-8311", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/spider-ham-caught-in-a-ham-2021.webp" },
-            { act: "Spider-Verse", t: "Venom: Let There Be Carnage", y: "2021", ty: "Movie", u: "Earth-688", rq: true, ott: ["Netflix", "Prime Video"], img: "marvel-movies-poster/venom-let-there-be-carnage-2021.webp" },
-            { act: "Spider-Verse", t: "Morbius", y: "2022", ty: "Movie", u: "Earth-688", rq: false, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/morbius-2022.webp" },
-            { act: "Spider-Verse", t: "Madame Web", y: "2024", ty: "Movie", u: "Unknown", rq: false, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/madame-web-2024.webp" },
-            { act: "Spider-Verse", t: "Spider-Man: Across the Spider-Verse", y: "2023", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/spider-man-across-the-spider-verse-2023.webp" },
-            { act: "Spider-Verse", t: "The Spider Within", y: "2023", ty: "Short", u: "Earth-1610", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/the-spider-within-2023.webp" },
-            { act: "Spider-Verse", t: "Kraven the Hunter", y: "2024", ty: "Movie", u: "Earth-688", rq: false, ott: ["Theaters"], img: "marvel-movies-poster/kraven-the-hunter-2024.webp" },
-            { act: "Spider-Verse", t: "Venom: The Last Dance", y: "2024", ty: "Movie", u: "Earth-688", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/venom-the-last-dance-2024.webp" },
-            { act: "Spider-Verse", t: "Spider-Man: Beyond the Spider-Verse", y: "2027", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Theaters (Upcoming)"], img: "marvel-movies-poster/spider-man-beyon-the-spider-verse-2027.webp" },
-            { act: "Spider-Verse", t: "Spider-Noir", y: "2026", ty: "Series", u: "Earth-Noir", rq: false, ott: ["Prime Video (Upcoming)"], img: "marvel-movies-poster/spider-noir-2026.webp" },
-
-            // ACT V
-            { act: "Multiverse Saga", t: "Loki (Season 1)", y: "2021", ty: "Series", u: "Outside Time", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/loki-2021.webp" },
-            { act: "Multiverse Saga", t: "What If...? (Season 1)", y: "2021", ty: "Animation", u: "Various", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/what-if...-2021.webp" },
-            { act: "Multiverse Saga", t: "WandaVision", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/wandavision-2021.webp" },
-            { act: "Multiverse Saga", t: "The Falcon and the Winter Soldier", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-falcon-and-the-winter-soldier-2021.webp" },
-            { act: "Multiverse Saga", t: "Shang-Chi and the Ten Rings", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/shang-chi-and-the-ten-rings-2021.webp" },
-            { act: "Multiverse Saga", t: "Eternals", y: "2021", ty: "Movie", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/eternals-2021.webp" },
-            { act: "Multiverse Saga", t: "Spider-Man: Far From Home", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-far-from-home-2019.webp" },
-            { act: "Multiverse Saga", t: "Spider-Man: No Way Home", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-no-way-home-2021.webp" },
-            { act: "Multiverse Saga", t: "Doctor Strange in the Multiverse of Madness", y: "2022", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/doctor-strange-in-the-multiverse-2022.webp" },
-            { act: "Multiverse Saga", t: "Hawkeye", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/hawkeye-2021.webp" },
-            { act: "Multiverse Saga", t: "Moon Knight", y: "2022", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/moon-knight-2022.webp" },
-            { act: "Multiverse Saga", t: "Black Panther: Wakanda Forever", y: "2022", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-panther-wakanda-forever-2022.webp" },
-            { act: "Multiverse Saga", t: "She-Hulk: Attorney at Law", y: "2022", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/she-hulk-attorney-at-law-2022.webp" },
-            { act: "Multiverse Saga", t: "Ms. Marvel", y: "2022", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ms.marvel-2022.webp" },
-            { act: "Multiverse Saga", t: "Thor: Love and Thunder", y: "2022", ty: "Movie", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-love-and-thunder-2022.webp" },
-            { act: "Multiverse Saga", t: "Werewolf by Night", y: "2022", ty: "Special", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/werewolf-by-night-2022.webp" },
-            { act: "Multiverse Saga", t: "GotG Holiday Special", y: "2022", ty: "Special", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/gotg-holiday-special-2022.webp" },
-            { act: "Multiverse Saga", t: "Guardians of the Galaxy Vol. 3", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardians-of-the-galaxy-vol-3-2023.webp" },
-            { act: "Multiverse Saga", t: "Ant-Man and the Wasp: Quantumania", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-and-the-wasp-quantumania-2023.webp" },
-            { act: "Multiverse Saga", t: "Secret Invasion", y: "2023", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/secret-invasion-2023.webp" },
-            { act: "Multiverse Saga", t: "The Marvels", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-marvels-2023.webp" },
-            { act: "Multiverse Saga", t: "Loki (Season 2)", y: "2023", ty: "Series", u: "Outside Time", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/loki-2021.webp" },
-            { act: "Multiverse Saga", t: "What If...? (Season 2)", y: "2023", ty: "Animation", u: "Various", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/what-if...-2021.webp" },
-            { act: "Multiverse Saga", t: "Echo", y: "2024", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/echo-2024.webp" },
-            { act: "Multiverse Saga", t: "X-Men '97 (Season 1)", y: "2024", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-97-2024.webp" },
-            { act: "Multiverse Saga", t: "Deadpool & Wolverine", y: "2024", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar", "Theaters"], img: "marvel-movies-poster/deadpool-and-wolverine-2024.webp" },
-            { act: "Multiverse Saga", t: "Agatha All Along", y: "2024", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agatha-all-along-2024.webp" },
-            { act: "Multiverse Saga", t: "Captain America: Brave New World", y: "2025", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-brave-new-world-2025.webp" },
-            { act: "Multiverse Saga", t: "Daredevil: Born Again", y: "2025", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/daredevil-born-again-2025.webp" },
-            { act: "Multiverse Saga", t: "Thunderbolts*", y: "2025", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/thunderbolts-2025.webp" },
-            { act: "Multiverse Saga", t: "The Fantastic Four: First Steps", y: "2025", ty: "Movie", u: "Alternate", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/the-fantastic-four-first-steps-2025.webp" },
-            { act: "Multiverse Saga", t: "Ironheart", y: "2025", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/ironheart-2025.webp" },
-            { act: "Multiverse Saga", t: "Marvel Zombies", y: "Unannounced", ty: "Animation", u: "Alternate", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/marvel-zombies-2025.webp" },
-            { act: "Multiverse Saga", t: "Eyes of Wakanda", y: "2025", ty: "Animation", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/eyes-of-wakanda-2025.webp" },
-            { act: "Multiverse Saga", t: "Your Friendly Neighborhood Spider-Man", y: "2026", ty: "Animation", u: "Alternate", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/your-friendly-neighborhood-spider-man-2025.webp" },
-            { act: "Multiverse Saga", t: "Wonder Man", y: "2026", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/wonder-man-2026.webp" },
-            { act: "Multiverse Saga", t: "Vision Quest", y: "2026", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/visionquest-2026.webp" },
-            { act: "Multiverse Saga", t: "Blade", y: "2028", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters (Upcoming)"], img: "marvel-movies-poster/blade-2027.webp" },
-            { act: "Multiverse Saga", t: "Avengers: Doomsday", y: "2026", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/avenger-doomstay-2026.webp" },
-            { act: "Multiverse Saga", t: "Avengers: Secret Wars", y: "2027", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/avengers-secret-wars-2027.webp" }
+            {
+                "act": "Dance of the Dragons",
+                "t": "House of the Dragon",
+                "y": "2022",
+                "ty": "TV Series",
+                "u": "House Targaryen",
+                "rq": true,
+                "ott": [
+                    "JioCinema",
+                    "Blu-ray/Digital"
+                ]
+            },
+            {
+                "act": "Dance of the Dragons",
+                "t": "House of the Dragon: The House that Dragons Built",
+                "y": "2022",
+                "ty": "Documentary",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "JioCinema"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "A Knight of the Seven Kingdoms: The Hedge Knight",
+                "y": "2026",
+                "ty": "TV Series",
+                "u": "House Targaryen",
+                "rq": true,
+                "ott": [
+                    "JioCinema",
+                    "Blu-ray/Digital"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Game of Thrones",
+                "y": "2011",
+                "ty": "TV Series",
+                "u": "House Stark",
+                "rq": true,
+                "ott": [
+                    "JioCinema",
+                    "Blu-ray/Digital"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Game of Thrones: The Last Watch",
+                "y": "2019",
+                "ty": "Documentary",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "JioCinema",
+                    "Blu-ray/Digital"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Game Revealed",
+                "y": "2017",
+                "ty": "Documentary Series",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "JioCinema"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Inside the Episode",
+                "y": "2011",
+                "ty": "Behind the Scenes",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "JioCinema"
+                ]
+            },
+            {
+                "act": "Age of Heroes",
+                "t": "Histories & Lore",
+                "y": "2014",
+                "ty": "Animated Shorts",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "Blu-ray/Digital"
+                ]
+            },
+            {
+                "act": "Aegon's Conquest",
+                "t": "Aegon's Conquest",
+                "y": "2028",
+                "ty": "Theatrical Film (Announced)",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Theaters"
+                ]
+            },
+            {
+                "act": "Andal Invasion",
+                "t": "Ten Thousand Ships",
+                "y": "Unannounced",
+                "ty": "Announced Series",
+                "u": "House Martell",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "Valyrian Freehold",
+                "t": "The Golden Empire",
+                "y": "Unannounced",
+                "ty": "Announced Animation",
+                "u": "Yi Ti",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "Dance of the Dragons",
+                "t": "Nine Voyages",
+                "y": "Unannounced",
+                "ty": "Announced Animation",
+                "u": "House Velaryon",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "The Long Night",
+                "t": "Bloodmoon",
+                "y": "2019",
+                "ty": "Cancelled Pilot",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Snow",
+                "y": "2024",
+                "ty": "Cancelled Series",
+                "u": "House Stark",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Flea Bottom",
+                "y": "2021",
+                "ty": "Cancelled Series",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            }
         ];
-
-
-        const gradClasses = ["grad-616", "grad-10005", "grad-96283", "grad-120703", "grad-688", "grad-1610", "grad-legacy"];
-        function getRandomGradient(id) {
-            let hash = 0;
-            for (let i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
-            return gradClasses[Math.abs(hash) % gradClasses.length];
-        }
 
         function ottImg(file, alt) {
             return `<span class="h-9 mr-3 shrink-0 rounded-lg bg-apple-bg border border-apple-border px-2.5 py-1.5 flex items-center justify-center overflow-hidden"><img src="icons/${file}" alt="${alt}" class="h-full w-auto max-w-[110px] object-contain"></span>`;
         }
 
         function getGradientClass(universe) {
-            if (universe.includes("616")) return "grad-616";
-            if (universe.includes("10005")) return "grad-10005";
-            if (universe.includes("96283")) return "grad-96283";
-            if (universe.includes("120703")) return "grad-120703";
-            if (universe.includes("688")) return "grad-688";
-            if (universe.includes("1610")) return "grad-1610";
+            if (universe.includes("Targaryen")) return "grad-96283";
+            if (universe.includes("Stark")) return "grad-120703";
+            if (universe.includes("Velaryon")) return "grad-10005";
+            if (universe.includes("Martell")) return "grad-616";
+            if (universe.includes("Yi Ti")) return "grad-1610";
             return "grad-legacy";
         }
 
@@ -768,19 +748,19 @@
                     <article onclick="openModal(${index})" class="group cursor-pointer flex flex-col gap-3 opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms;">
                         <!-- Premium Generative Poster -->
                         <div class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out transform group-hover:scale-[1.03] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] border border-apple-border bg-apple-card">
-                            
+
                             <!-- Watched Overlay Dimmer -->
                             ${isWatched ? `<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-20 transition-opacity"></div>` : ''}
 
                             <!-- Gradient Fallback Base -->
                             <div class="absolute inset-0 ${gradClass} opacity-80 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                            
+
                             <!-- Optional Image -->
                             ${item.img ? `<img src="${item.img}" alt="${item.t}" class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-700 group-hover:scale-105" onerror="this.style.display='none'; document.getElementById('abbr-${index}').style.display='block';" />` : ''}
-                            
+
                             <!-- Top Overlay for Badge Contrast if Image is Present -->
                             ${item.img ? `<div class="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none"></div>` : ''}
-                            
+
                             <!-- Internal Poster Layout -->
                             <div class="absolute inset-0 p-4 flex flex-col justify-between z-10 pointer-events-none">
                                 <div class="flex justify-between items-start gap-1.5">
@@ -799,7 +779,7 @@
                                 </div>
                             ` : ''}
                         </div>
-                        
+
                         <!-- Metadata below poster -->
                         <div class="px-1 ${isWatched ? 'opacity-40' : 'opacity-100'} transition-opacity">
                             <h3 class="text-base font-semibold text-white leading-tight truncate group-hover:text-apple-blue transition-colors">${item.t}</h3>
@@ -892,9 +872,9 @@
             }).join('');
 
             // Description logic
-            let desc = `This project belongs to ${item.u} and was released in ${item.y}. It is classified as a ${item.ty}. `;
-            if (item.rq) desc += "It is considered a highly critical watch for understanding the core overarching narrative of the Multiverse Saga and upcoming Secret Wars.";
-            else desc += "While not strictly mandatory for the main narrative, it provides excellent flavor and historical context for the expansive Marvel Multiverse.";
+            let desc = `This entry belongs to ${item.u} and was released in ${item.y}. It is classified as a ${item.ty}. `;
+            if (item.rq) desc += "It is considered essential viewing for understanding the core canon of the War of the Five Kings and the wider Song of Ice and Fire saga.";
+            else desc += "While not strictly essential to the main narrative, it provides excellent companion viewing and historical depth on the history of the Known World.";
             document.getElementById('modalDesc').textContent = desc;
 
             // Animate In

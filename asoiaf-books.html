@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Omniverse | Marvel Archive</title>
+    <title>Omniverse | ASOIAF Archive</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,7 +99,7 @@
             display: none;
         }
 
-        /* Generative Mesh Gradients for Universes */
+        /* Generative Mesh Gradients for Houses & Regions */
         .grad-616 {
             background: linear-gradient(135deg, #7f00ff, #e100ff);
         }
@@ -172,7 +172,7 @@
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
                         Movies</a>
                     <a href="marvel-comics.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">Marvel
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
                         Comics</a>
                     <a href="dc-movies.html"
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC
@@ -181,7 +181,7 @@
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC
                         Comics</a>
                     <a href="asoiaf-books.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">ASOIAF
                         Books</a>
                     <a href="asoiaf-screen.html"
                         class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
@@ -200,7 +200,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Search movies, series, or universes..."
+                    <input type="text" id="searchInput" placeholder="Search books, novellas, or houses..."
                         class="w-full bg-apple-card border border-transparent rounded-2xl lg:rounded-full pl-12 lg:pl-10 pr-4 py-3.5 lg:py-2.5 text-base lg:text-sm text-white focus:outline-none focus:border-apple-blue focus:bg-apple-bg focus:ring-4 focus:ring-apple-blue/20 transition-all placeholder-apple-muted">
                 </div>
 
@@ -226,21 +226,13 @@
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Timelines</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="The Foundations">The Foundations</li>
+                                    data-value="Age of Heroes">Age of Heroes</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="The New Champions">The New Champions</li>
+                                    data-value="Dance of the Dragons">Dance of the Dragons</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Cosmic & Multiverse">Cosmic & Multiverse</li>
+                                    data-value="Dunk & Egg Era">Dunk & Egg Era</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Spider-Man & Web of Life">Spider-Man & Web of Life</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Street-Level & Supernatural">Street-Level & Supernatural</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Mutants: X-Men Saga">Mutants: X-Men Saga</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Major Crossover Events">Major Crossover Events</li>
-                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="MCU Tie-In Comics">MCU Tie-In Comics</li>
+                                    data-value="War of the Five Kings">War of the Five Kings</li>
                             </ul>
                         </div>
                     </div>
@@ -263,9 +255,11 @@
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Platforms</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Marvel Unlimited">Marvel Unlimited</li>
+                                    data-value="Kindle">Kindle</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
-                                    data-value="Omnibus">Omnibus</li>
+                                    data-value="Physical (Hardcover)">Physical (Hardcover)</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
+                                    data-value="Audible">Audible</li>
                             </ul>
                         </div>
                     </div>
@@ -390,390 +384,289 @@
     </div>
 
     <script>
-        // Uncut, massive array containing all 160+ items
+        // ASOIAF print canon: novels, novellas, companion lore, and graphic novels
         const watchData = [
             {
-                "act": "The Foundations",
-                "t": "Iron Man: Extremis",
-                "y": "2005",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The Foundations",
-                "t": "Captain America: The Winter Soldier",
-                "y": "2005",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The Foundations",
-                "t": "Thor: The God Butcher",
-                "y": "2012",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The Foundations",
-                "t": "Hawkeye: My Life as a Weapon",
-                "y": "2012",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The Foundations",
-                "t": "Black Widow: The Name of the Rose",
-                "y": "2010",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "The Foundations",
-                "t": "Planet Hulk & World War Hulk",
-                "y": "2006",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The New Champions",
-                "t": "Ms. Marvel: No Normal",
-                "y": "2014",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The New Champions",
-                "t": "Moon Knight: From the Dead",
-                "y": "2014",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "The New Champions",
-                "t": "Shang-Chi: Master of Kung Fu",
-                "y": "1973",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "The Infinity Gauntlet",
-                "y": "1991",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "Annihilation",
-                "y": "2006",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "Fantastic Four by Jonathan Hickman",
-                "y": "2009",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "Avengers / New Avengers by Hickman",
-                "y": "2012",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "Secret Wars (2015)",
-                "y": "2015",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Cosmic & Multiverse",
-                "t": "Kang the Conqueror",
-                "y": "2021",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "Spider-Man & Web of Life",
-                "t": "Ultimate Spider-Man",
-                "y": "2000",
-                "ty": "Comic",
-                "u": "Earth-1610",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Spider-Man & Web of Life",
-                "t": "Spider-Verse",
-                "y": "2014",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Spider-Man & Web of Life",
-                "t": "Venom: Lethal Protector",
-                "y": "1993",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Street-Level & Supernatural",
-                "t": "Daredevil: Born Again",
-                "y": "1986",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "Street-Level & Supernatural",
-                "t": "Tomb of Dracula",
-                "y": "1972",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Street-Level & Supernatural",
-                "t": "The Punisher: Welcome Back, Frank",
-                "y": "2000",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Mutants: X-Men Saga",
-                "t": "The Dark Phoenix Saga",
-                "y": "1980",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "Mutants: X-Men Saga",
-                "t": "Days of Future Past",
-                "y": "1981",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "Mutants: X-Men Saga",
-                "t": "House of X / Powers of X",
-                "y": "2019",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Major Crossover Events",
-                "t": "Secret Invasion",
-                "y": "2008",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited",
-                    "Omnibus"
-                ]
-            },
-            {
-                "act": "Major Crossover Events",
-                "t": "Civil War",
-                "y": "2006",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "Major Crossover Events",
-                "t": "Time Runs Out",
-                "y": "2014",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": true,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "MCU Tie-In Comics",
-                "t": "Fury's Big Week",
-                "y": "2012",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "MCU Tie-In Comics",
-                "t": "Doctor Strange Prelude",
-                "y": "2016",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "MCU Tie-In Comics",
-                "t": "Black Widow Prelude",
-                "y": "2020",
-                "ty": "Comic",
-                "u": "Earth-616",
-                "rq": false,
-                "ott": [
-                    "Marvel Unlimited"
-                ]
-            },
-            {
-                "act": "MCU Tie-In Comics",
-                "t": "Infinity War Prelude",
+                "act": "Dance of the Dragons",
+                "t": "Fire & Blood",
                 "y": "2018",
-                "ty": "Comic",
-                "u": "Earth-616",
+                "ty": "Fake-History Novel",
+                "u": "House Targaryen",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "A Knight of the Seven Kingdoms",
+                "y": "2015",
+                "ty": "Novella Anthology",
+                "u": "House Targaryen",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Game of Thrones",
+                "y": "1996",
+                "ty": "Novel",
+                "u": "House Stark",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Clash of Kings",
+                "y": "1998",
+                "ty": "Novel",
+                "u": "House Baratheon",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Storm of Swords",
+                "y": "2000",
+                "ty": "Novel",
+                "u": "House Lannister",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Feast for Crows",
+                "y": "2005",
+                "ty": "Novel",
+                "u": "House Martell",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Dance with Dragons",
+                "y": "2011",
+                "ty": "Novel",
+                "u": "House Targaryen",
+                "rq": true,
+                "ott": [
+                    "Kindle",
+                    "Physical (Hardcover)",
+                    "Audible"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "The Winds of Winter",
+                "y": "Unannounced",
+                "ty": "Upcoming Novel",
+                "u": "House Stark",
+                "rq": true,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Dream of Spring",
+                "y": "Unannounced",
+                "ty": "Upcoming Novel",
+                "u": "House Stark",
+                "rq": true,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "Age of Heroes",
+                "t": "The World of Ice & Fire",
+                "y": "2014",
+                "ty": "Encyclopedia",
+                "u": "Known World",
                 "rq": false,
                 "ott": [
-                    "Marvel Unlimited"
+                    "Kindle",
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dance of the Dragons",
+                "t": "The Rise of the Dragon",
+                "y": "2022",
+                "ty": "Illustrated Companion",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dance of the Dragons",
+                "t": "Fire & Blood Volume 2",
+                "y": "Unannounced",
+                "ty": "Announced Novel",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Blood of the Dragon",
+                "y": "1996",
+                "ty": "Novella",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Path of the Dragon",
+                "y": "2000",
+                "ty": "Novella",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "Arms of the Kraken",
+                "y": "2002",
+                "ty": "Novella",
+                "u": "House Greyjoy",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Age of Heroes",
+                "t": "The Lands of Ice and Fire",
+                "y": "2012",
+                "ty": "Reference / Maps",
+                "u": "Known World",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "The Wit & Wisdom of Tyrion Lannister",
+                "y": "2013",
+                "ty": "Quote Collection",
+                "u": "House Lannister",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Game of Thrones: The Graphic Novel",
+                "y": "2012",
+                "ty": "Graphic Novel",
+                "u": "House Stark",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "War of the Five Kings",
+                "t": "A Clash of Kings: The Graphic Novel",
+                "y": "2017",
+                "ty": "Graphic Novel",
+                "u": "House Baratheon",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "The Hedge Knight",
+                "y": "2010",
+                "ty": "Graphic Novel",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "The Sworn Sword",
+                "y": "2015",
+                "ty": "Graphic Novel",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "The Mystery Knight",
+                "y": "2019",
+                "ty": "Graphic Novel",
+                "u": "House Targaryen",
+                "rq": false,
+                "ott": [
+                    "Physical (Hardcover)"
+                ]
+            },
+            {
+                "act": "Dunk & Egg Era",
+                "t": "The She-Wolves of Winterfell",
+                "y": "Unannounced",
+                "ty": "Announced Novella",
+                "u": "House Stark",
+                "rq": false,
+                "ott": [
+                    "Unreleased"
                 ]
             }
         ];
-
-
-        const gradClasses = ["grad-616", "grad-10005", "grad-96283", "grad-120703", "grad-688", "grad-1610", "grad-legacy"];
-        function getRandomGradient(id) {
-            let hash = 0;
-            for (let i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
-            return gradClasses[Math.abs(hash) % gradClasses.length];
-        }
 
         function ottImg(file, alt) {
             return `<span class="h-9 mr-3 shrink-0 rounded-lg bg-apple-bg border border-apple-border px-2.5 py-1.5 flex items-center justify-center overflow-hidden"><img src="icons/${file}" alt="${alt}" class="h-full w-auto max-w-[110px] object-contain"></span>`;
         }
 
         function getGradientClass(universe) {
-            if (universe.includes("616")) return "grad-616";
-            if (universe.includes("10005")) return "grad-10005";
-            if (universe.includes("96283")) return "grad-96283";
-            if (universe.includes("120703")) return "grad-120703";
-            if (universe.includes("688")) return "grad-688";
-            if (universe.includes("1610")) return "grad-1610";
+            if (universe.includes("Targaryen")) return "grad-96283";
+            if (universe.includes("Stark")) return "grad-120703";
+            if (universe.includes("Lannister")) return "grad-1610";
+            if (universe.includes("Baratheon")) return "grad-688";
+            if (universe.includes("Greyjoy")) return "grad-10005";
+            if (universe.includes("Martell")) return "grad-616";
             return "grad-legacy";
         }
 
@@ -938,7 +831,7 @@
 
             currentFilteredData.forEach((item, index) => {
                 const delay = (index % 20) * 50; // Stagger animation
-                const gradClass = getRandomGradient(item.t);
+                const gradClass = getGradientClass(item.u);
                 const abbr = getAbbreviation(item.t);
                 const itemId = getItemId(item);
                 const isWatched = watchedIds.includes(itemId);
@@ -947,19 +840,19 @@
                     <article onclick="openModal(${index})" class="group cursor-pointer flex flex-col gap-3 opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms;">
                         <!-- Premium Generative Poster -->
                         <div class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out transform group-hover:scale-[1.03] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] border border-apple-border bg-apple-card">
-                            
+
                             <!-- Watched Overlay Dimmer -->
                             ${isWatched ? `<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-20 transition-opacity"></div>` : ''}
 
                             <!-- Gradient Fallback Base -->
                             <div class="absolute inset-0 ${gradClass} opacity-80 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-                            
+
                             <!-- Optional Image -->
                             ${item.img ? `<img src="${item.img}" alt="${item.t}" class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-700 group-hover:scale-105" onerror="this.style.display='none'; document.getElementById('abbr-${index}').style.display='block';" />` : ''}
-                            
+
                             <!-- Top Overlay for Badge Contrast if Image is Present -->
                             ${item.img ? `<div class="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none"></div>` : ''}
-                            
+
                             <!-- Internal Poster Layout -->
                             <div class="absolute inset-0 p-4 flex flex-col justify-between z-10 pointer-events-none">
                                 <div class="flex justify-between items-start gap-1.5">
@@ -978,7 +871,7 @@
                                 </div>
                             ` : ''}
                         </div>
-                        
+
                         <!-- Metadata below poster -->
                         <div class="px-1 ${isWatched ? 'opacity-40' : 'opacity-100'} transition-opacity">
                             <h3 class="text-base font-semibold text-white leading-tight truncate group-hover:text-apple-blue transition-colors">${item.t}</h3>
@@ -997,7 +890,7 @@
         function openModal(index) {
             currentOpenItemIndex = index;
             const item = currentFilteredData[index];
-            const gradClass = getRandomGradient(item.t);
+            const gradClass = getGradientClass(item.u);
             const watchedIds = getWatchedList();
             const isWatched = watchedIds.includes(getItemId(item));
 
@@ -1028,30 +921,14 @@
             // Populate Platforms
             const platformsDiv = document.getElementById('modalPlatforms');
             const ottLogos = {
-                "YouTube": '<svg class="w-5 h-5 mr-3 text-[#FF0000] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
-                "Apple TV": ottImg('apple-tv.png', 'Apple TV'),
-                "Netflix": '<svg class="w-5 h-5 mr-3 text-[#E50914] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="m5.398 0 8.348 23.602c2.346.059 4.856.398 4.856.398L10.113 0H5.398zm8.489 0v9.172l4.715 13.33V0h-4.715zM5.398 1.5V24c1.873-.225 2.81-.312 4.715-.398V14.83L5.398 1.5z"/></svg>',
-                "Max": ottImg('hbo-max.png', 'Max'),
                 "Audible": ottImg('audible.png', 'Audible'),
-                "Disney+ Hotstar": ottImg('jio-hotstar.png', 'Disney+ Hotstar'),
-                "Prime Video": ottImg('prime-video.png', 'Prime Video'),
-                "Hulu": ottImg('hulu.png', 'Hulu'),
-                "SonyLIV": ottImg('sonly-liv.png', 'SonyLIV'),
-                "JioCinema": ottImg('jio-cienma.png', 'JioCinema'),
-                "CW Seed": ottImg('cw-seed.png', 'CW Seed'),
-                "DCUI": ottImg('dcui.png', 'DCUI'),
-                "Marvel Unlimited": ottImg('marvel-unlimited.png', 'Marvel Unlimited'),
-                "Lionsgate Play": ottImg('lionsgate-play.png', 'Lionsgate Play'),
                 "Kindle": ottImg('kindle.png', 'Kindle'),
-                "Blu-ray/Digital": ottImg('blu-ray.png', 'Blu-ray/Digital'),
                 "Physical (Hardcover)": '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>',
-                "Omnibus": ottImg('omnibus.png', 'Omnibus'),
-                "Theaters": '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 6v12a2 2 0 002 2h12a2 2 0 002-2V6M4 6l2-3h12l2 3M9 6v14M15 6v14"/></svg>',
                 "Unreleased": '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>'
             };
 
             platformsDiv.innerHTML = item.ott.map(p => {
-                let logoSvg = '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>';
+                let logoSvg = '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>';
                 for (const [key, svg] of Object.entries(ottLogos)) {
                     if (p.includes(key)) {
                         logoSvg = svg;
@@ -1071,9 +948,9 @@
             }).join('');
 
             // Description logic
-            let desc = `This project belongs to ${item.u} and was released in ${item.y}. It is classified as a ${item.ty}. `;
-            if (item.rq) desc += "It is considered a highly critical read for understanding the core overarching narrative of the Multiverse Saga and upcoming Secret Wars.";
-            else desc += "While not strictly mandatory for the main narrative, it provides excellent flavor and historical context for the expansive Marvel Multiverse.";
+            let desc = `This entry belongs to ${item.u} and was released in ${item.y}. It is classified as a ${item.ty}. `;
+            if (item.rq) desc += "It is considered essential reading for understanding the core canon of the War of the Five Kings and the wider Song of Ice and Fire saga.";
+            else desc += "While not strictly essential to the main narrative, it provides excellent companion lore and historical depth on the history of the Known World.";
             document.getElementById('modalDesc').textContent = desc;
 
             // Animate In
