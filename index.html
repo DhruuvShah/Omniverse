@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" class="antialiased">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Omniverse | Marvel Archive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        <script>
+        tailwind.config = {
+            theme: {
+                screens: {
+                    "sm": "640px",
+                    "md": "768px",
+                    "lg": "1024px",
+                    "xl": "1280px",
+                    "2xl": "1536px",
+                    "3xl": "1920px",
+                    "4xl": "2560px"
+                },
+                extend: {
+                    fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] },
+                    colors: {
+                        apple: {
+                            bg: '#000000',
+                            card: '#1c1c1e',
+                            text: '#f5f5f7',
+                            muted: '#86868b',
+                            border: '#333336',
+                            blue: '#0a84ff'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'modal-in': 'modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        modalIn: {
+                            '0%': { opacity: 0, transform: 'scale(0.95) translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'scale(1) translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #f5f5f7;
+            overscroll-behavior-y: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333336;
+            border-radius: 9999px;
+            border: 3px solid #000000;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #48484a;
+        }
+
+        .glass-nav {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .glass-modal {
+            background: rgba(28, 28, 30, 0.85);
+            backdrop-filter: saturate(180%) blur(40px);
+            -webkit-backdrop-filter: saturate(180%) blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Generative Mesh Gradients for Universes */
+        .grad-616 {
+            background: linear-gradient(135deg, #7f00ff, #e100ff);
+        }
+
+        .grad-10005 {
+            background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC);
+        }
+
+        .grad-96283 {
+            background: linear-gradient(135deg, #870000, #190A05);
+        }
+
+        .grad-120703 {
+            background: linear-gradient(135deg, #000428, #004e92);
+        }
+
+        .grad-688 {
+            background: linear-gradient(135deg, #141E30, #243B55);
+        }
+
+        .grad-1610 {
+            background: linear-gradient(135deg, #f12711, #f5af19);
+        }
+
+        .grad-legacy {
+            background: linear-gradient(135deg, #3E5151, #DECBA4);
+        }
+
+        .poster-image {
+            mix-blend-mode: overlay;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</head>
+
+<body class="selection:bg-apple-blue selection:text-white pb-20">
+
+    <nav class="sticky top-0 z-50 glass-nav border-b border-apple-border mb-8 relative">
+        <!-- Mobile Header Bar -->
+        <div class="px-6 md:px-12 py-4 max-w-screen-2xl mx-auto flex items-center justify-between lg:hidden">
+            <span class="text-white font-bold tracking-wide">The Omniverse Database</span>
+            <button id="mobileMenuBtn" class="text-white p-2 focus:outline-none hover:bg-[#2c2c2e] rounded-xl transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Collapsible Menu Content / Desktop Row -->
+        <div id="mobileMenuContent" class="hidden lg:flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-6 lg:gap-8 w-full max-w-screen-2xl mx-auto px-6 md:px-12 py-6 lg:py-4 absolute lg:static top-full left-0 glass-nav lg:bg-transparent shadow-2xl lg:shadow-none border-b border-apple-border lg:border-none z-40 max-h-[calc(100vh-70px)] overflow-y-auto lg:overflow-visible lg:max-h-none">
+            
+            <!-- Tabs Group -->
+            <div class="w-full lg:w-auto flex flex-col lg:flex-row justify-start lg:justify-start lg:overflow-x-auto hide-scroll shrink-0">
+                <div class="bg-apple-card border border-apple-border p-2 lg:p-1.5 rounded-2xl lg:rounded-full flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-max">
+                    <a href="index.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">Marvel Movies</a>
+                <a href="marvel-comics.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel Comics</a>
+                <a href="dc-movies.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC Movies</a>
+                <a href="dc-comics.html" class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC Comics</a>
+                </div>
+            </div>
+
+            <!-- Controls Group (Search + Filters) -->
+            <div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-start lg:justify-end gap-4 lg:gap-3 w-full lg:w-auto">
+                
+                <!-- Apple-style Search Bar -->
+                <div class="relative w-full lg:w-[320px] 2xl:w-[400px] shrink-0 group">
+                    <svg class="absolute left-4 lg:left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-apple-muted group-focus-within:text-white transition-colors"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search movies, series, or universes..."
+                        class="w-full bg-apple-card border border-transparent rounded-2xl lg:rounded-full pl-12 lg:pl-10 pr-4 py-3.5 lg:py-2.5 text-base lg:text-sm text-white focus:outline-none focus:border-apple-blue focus:bg-apple-bg focus:ring-4 focus:ring-apple-blue/20 transition-all placeholder-apple-muted">
+                </div>
+
+                <!-- Custom Segmented Filters -->
+                <div class="flex flex-col sm:flex-row lg:flex-row flex-wrap items-stretch sm:items-center justify-start lg:justify-center gap-3 lg:gap-2 w-full lg:w-auto relative z-50">
+                    
+                    <!-- Custom Act Dropdown -->
+                    <div class="relative w-full sm:w-auto" id="actDropdownContainer">
+                        <button id="actDropdownBtn"
+                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
+                            <span id="actDropdownText">All Timelines</span>
+                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="actDropdownMenu"
+                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-56 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
+                            <ul class="py-1 text-base lg:text-sm text-white font-medium">
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="All">All Timelines</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Custom Platform Dropdown -->
+                    <div class="relative w-full sm:w-auto" id="platformDropdownContainer">
+                        <button id="platformDropdownBtn"
+                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
+                            <span id="platformDropdownText">All Platforms</span>
+                            <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                                </path>
+                            </svg>
+                        </button>
+                        <div id="platformDropdownMenu"
+                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-48 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
+                            <ul class="py-1 text-base lg:text-sm text-white font-medium">
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="All">All Platforms</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Disney+ Hotstar">Disney+ Hotstar</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Netflix">Netflix</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="Prime Video">Prime Video</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="SonyLIV">SonyLIV</li>
+                                <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors" data-value="JioCinema">JioCinema</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <label class="flex items-center gap-3 lg:gap-2 cursor-pointer bg-apple-card border border-apple-border rounded-2xl lg:rounded-full px-5 py-3.5 lg:py-2.5 hover:bg-[#2c2c2e] transition-colors w-full sm:w-auto justify-center sm:justify-start">
+                        <input type="checkbox" id="requiredFilter" class="accent-apple-blue w-5 h-5 lg:w-4 lg:h-4 rounded">
+                        <span class="text-base lg:text-sm font-medium text-white">Required Only</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-12 pb-8 px-6 md:px-12 max-w-screen-2xl mx-auto">
+        <h1 class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-apple-text via-apple-text to-apple-muted tracking-tighter mb-4">THE OMNIVERSE DATABASE</h1>
+    </header>
+
+    
+
+    
+
+    <main class="px-6 md:px-12 max-w-screen-2xl mx-auto">
+        <!-- Progress Tracker -->
+        <div
+            class="mb-10 bg-gradient-to-r from-apple-card to-apple-bg border border-apple-border rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center justify-between shadow-2xl relative overflow-hidden">
+            <!-- Decorative Glow -->
+            <div
+                class="absolute -top-20 -left-20 w-64 h-64 bg-apple-blue/20 blur-[100px] rounded-full pointer-events-none">
+            </div>
+
+            <div class="relative z-10 text-center md:text-left">
+                <h2 class="text-2xl font-bold text-white mb-1 tracking-tight">Your Omniverse Journey</h2>
+                <p class="text-apple-muted text-sm font-medium" id="resultCount">Loading universe...</p>
+            </div>
+
+            <div class="relative z-10 w-full md:w-1/2 flex items-center gap-5">
+                <span class="text-sm font-bold text-apple-muted w-10 text-right" id="progressPercentage">0%</span>
+                <div
+                    class="flex-1 h-4 bg-black rounded-full overflow-hidden border border-apple-border shadow-inner relative">
+                    <div id="progressBar"
+                        class="h-full bg-gradient-to-r from-blue-600 via-apple-blue to-purple-500 w-0 transition-all duration-1000 ease-out rounded-full relative overflow-hidden">
+                        <!-- Shimmer effect on bar -->
+                        <div
+                            class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]">
+                        </div>
+                    </div>
+                </div>
+                <span class="text-base font-bold text-white whitespace-nowrap" id="progressText">0 / 0</span>
+            </div>
+        </div>
+
+        <div id="grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12 2xl:gap-x-8 2xl:gap-y-14">
+            <!-- Cards injected via JS -->
+        </div>
+    </main>
+
+    <div id="detailModal"
+        class="fixed inset-0 z-50 flex items-end md:items-center justify-center p-0 md:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md" onclick="closeModal()"></div>
+        <div id="modalContent"
+            class="glass-modal w-full md:w-[600px] max-h-[90vh] md:max-h-[80vh] rounded-t-[2rem] md:rounded-3xl overflow-hidden shadow-2xl relative transform translate-y-full md:translate-y-10 transition-transform duration-400 ease-out flex flex-col">
+            <!-- Close Button -->
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 z-30 bg-black/40 hover:bg-black/60 backdrop-blur-md text-white p-2 rounded-full transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <!-- Modal Header / Poster Area -->
+            <div id="modalPoster" class="h-64 md:h-80 relative flex flex-col justify-end p-8 overflow-hidden shrink-0">
+                <!-- Dynamically filled gradient or image -->
+                <div id="modalGradientBg" class="absolute inset-0 z-0"></div>
+                <img id="modalImgBg" src="" class="absolute inset-0 w-full h-full object-cover z-0 object-top"
+                    onerror="this.style.display='none';" />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-apple-card via-[#1c1c1e]/40 to-transparent z-10 pointer-events-none">
+                </div>
+
+                <div class="relative z-20">
+                    <span id="modalUniverse"
+                        class="text-xs font-semibold tracking-widest uppercase text-white/70 mb-1 block">Universe</span>
+                    <h2 id="modalTitle" class="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight">
+                        Title</h2>
+                    <div class="flex items-center gap-3 mt-3 text-sm font-medium text-white/80">
+                        <span id="modalYear">Year</span>
+                        <span>•</span>
+                        <span id="modalType">Type</span>
+                        <span id="modalRequiredBadge"
+                            class="hidden bg-white text-black px-2 py-0.5 rounded text-xs">Required Core</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-8 overflow-y-auto">
+
+                <!-- Watch Tracker Action Button -->
+                <button id="modalWatchBtn" onclick="toggleCurrentWatchStatus()"
+                    class="w-full mb-8 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-95 shadow-xl">
+                    <!-- Injected via JS -->
+                </button>
+
+                <h3 class="text-sm font-semibold text-apple-muted uppercase tracking-wider mb-4">Available To Stream On
+                </h3>
+                <div id="modalPlatforms" class="flex flex-col gap-3">
+                    <!-- Buttons injected via JS -->
+                </div>
+
+                <p id="modalDesc"
+                    class="mt-8 text-apple-muted text-sm leading-relaxed border-t border-apple-border pt-6">
+                    <!-- Dynamic description based on logic -->
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Uncut, massive array containing all 160+ items
+        const watchData = [
+            // ACT I
+            { act: "Progenitors", t: "Spider-Man", y: "1977", ty: "TV Movie/Pilot", u: "Earth-730911", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-1977.webp" },
+            { act: "Progenitors", t: "Dr. Strange", y: "1978", ty: "TV Movie", u: "Earth-96173", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/dr-strange-1978.webp" },
+            { act: "Progenitors", t: "Captain America & II: Death Too Soon", y: "1979", ty: "TV Movies", u: "Earth-600043", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/captain-america-and-II-death-too-soon-1979.webp" },
+            { act: "Progenitors", t: "Howard the Duck", y: "1986", ty: "Movie", u: "Earth-58470", rq: false, ott: ["Apple TV (Rent)", "Prime Video (Rent)"], img: "marvel-movies-poster/howard-the-duck-1986.webp" },
+            { act: "Progenitors", t: "The Punisher", y: "1989", ty: "Movie", u: "Earth-58627", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/the-punisher-1989.webp" },
+            { act: "Progenitors", t: "Captain America", y: "1990", ty: "Movie", u: "Earth-1990", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/captain-america-1990.webp" },
+            { act: "Progenitors", t: "The Fantastic Four (Unreleased)", y: "1994", ty: "Movie", u: "Earth-94000", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/the-fantastic-four-1994.webp" },
+            { act: "Progenitors", t: "Generation X", y: "1996", ty: "TV Movie", u: "Earth-700029", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/generation-x-1996.webp" },
+            { act: "Progenitors", t: "Nick Fury: Agent of S.H.I.E.L.D.", y: "1998", ty: "TV Movie", u: "Earth-700089", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/nick-fury-agent-of-s.h.i.e.l.d-1998.webp" },
+            { act: "Progenitors", t: "Man-Thing", y: "2005", ty: "Movie", u: "Earth-400083", rq: false, ott: ["Apple TV (Rent)", "Prime Video (Rent)"], img: "marvel-movies-poster/man-thing-2005.webp" },
+            { act: "Progenitors", t: "Power Pack", y: "1991", ty: "Unaired Pilot", u: "Unknown", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/power-pack-1991.webp" },
+            { act: "Progenitors", t: "Spider-Man (Seasons 1-3)", y: "1967", ty: "Animation", u: "Earth-6799", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-season(1-to-3)-1967.webp" },
+            { act: "Progenitors", t: "Spider-Man & His Amazing Friends", y: "1981", ty: "Animation", u: "Earth-8107", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-man-and-his-amazing-friends-1981.webp" },
+            { act: "Progenitors", t: "X-Men: Pryde of the X-Men", y: "1989", ty: "Animation", u: "Earth-8107", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/x-men-pryde-of-the-x-men-1989.webp" },
+            { act: "Progenitors", t: "X-Men: The Animated Series (S1-5)", y: "1992", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-the-animated-series-season(1-to-5)-1992.webp" },
+            { act: "Progenitors", t: "Spider-Man: The Animated Series (S1-5)", y: "1994", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-am-the-animated-series-season(1-to-5)-1994.webp" },
+            { act: "Progenitors", t: "Spider-Man Unlimited", y: "1999", ty: "Animation", u: "Earth-751263", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/spider-man-unlimited-1999.webp" },
+            { act: "Progenitors", t: "X-Men: Evolution", y: "2000", ty: "Animation", u: "Earth-11052", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/x-men-evolution-2000.webp" },
+            { act: "Progenitors", t: "Spider-Man: The New Animated Series", y: "2003", ty: "Animation", u: "Earth-760207", rq: false, ott: ["YouTube (Unofficial)"], img: "marvel-movies-poster/spider-man-new-animated-series-2003.webp" },
+            { act: "Progenitors", t: "Wolverine and the X-Men", y: "2009", ty: "Animation", u: "Earth-80920", rq: false, ott: ["Prime Video", "Apple TV (Rent)"], img: "marvel-movies-poster/wolverine-and-the-x-men-2009.webp" },
+            { act: "Progenitors", t: "The Spectacular Spider-Man", y: "2008", ty: "Animation", u: "Earth-26496", rq: true, ott: ["SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-spectacular-spider-man-2008.webp" },
+            { act: "Progenitors", t: "The Avengers: Earth's Mightiest Heroes", y: "2010", ty: "Animation", u: "Earth-80920", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-avengers-earthe's-mightiest-heros-2010.webp" },
+            { act: "Progenitors", t: "Ultimate Spidey, Avengers Assemble, Hulk", y: "2012", ty: "Animation", u: "Earth-12041", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ultimate-spidey-avengers-assemble-hulk-2012.webp" },
+
+            // ACT II
+            { act: "Legacy", t: "Blade", y: "1998", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-1998.webp" },
+            { act: "Legacy", t: "Blade II", y: "2002", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-ll-2002.webp" },
+            { act: "Legacy", t: "Blade: Trinity", y: "2004", ty: "Movie", u: "Earth-26320", rq: true, ott: ["Prime Video (Rent)", "Apple TV (Rent)"], img: "marvel-movies-poster/blade-trinity-2004.webp" },
+            { act: "Legacy", t: "Daredevil", y: "2003", ty: "Movie", u: "Earth-701306", rq: true, ott: ["Disney+ Hotstar", "Prime Video"], img: "marvel-movies-poster/daredevil-2003.webp" },
+            { act: "Legacy", t: "Elektra", y: "2005", ty: "Movie", u: "Earth-701306", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/elektra-2005.webp" },
+            { act: "Legacy", t: "Hulk", y: "2003", ty: "Movie", u: "Earth-400083", rq: false, ott: ["Prime Video", "JioCinema"], img: "marvel-movies-poster/hulk-2003.webp" },
+            { act: "Legacy", t: "The Punisher", y: "2004", ty: "Movie", u: "Earth-58732", rq: false, ott: ["Prime Video", "Lionsgate Play"], img: "marvel-movies-poster/the-punisher-2004.webp" },
+            { act: "Legacy", t: "Punisher: War Zone", y: "2008", ty: "Movie", u: "Earth-12101", rq: false, ott: ["Prime Video", "Lionsgate Play"], img: "marvel-movies-poster/punisher-war-zone-2008.webp" },
+            { act: "Legacy", t: "Ghost Rider", y: "2007", ty: "Movie", u: "Earth-121347", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/ghost-rider-2007.webp" },
+            { act: "Legacy", t: "Ghost Rider: Spirit of Vengeance", y: "2011", ty: "Movie", u: "Earth-121347", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/ghost-rider-spirit-of-vengeance-2011.webp" },
+            { act: "Legacy", t: "Fantastic Four", y: "2005", ty: "Movie", u: "Earth-121698", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fantastic-four-2005.webp" },
+            { act: "Legacy", t: "Fantastic Four: Rise of the Silver Surfer", y: "2007", ty: "Movie", u: "Earth-121698", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fantastic-four-rise-of-the-silver-surfer-2007.webp" },
+            { act: "Legacy", t: "Fant4stic", y: "2015", ty: "Movie", u: "Earth-15866", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/fant4stic-2015.webp" },
+            { act: "Legacy", t: "Spider-Man", y: "2002", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-2002.webp" },
+            { act: "Legacy", t: "Spider-Man 2", y: "2004", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-2-2004.webp" },
+            { act: "Legacy", t: "Spider-Man 3", y: "2007", ty: "Movie", u: "Earth-96283", rq: true, ott: ["Netflix", "SonyLIV", "JioCinema", "Prime Video"], img: "marvel-movies-poster/spider-man-3-2007.webp" },
+            { act: "Legacy", t: "The Amazing Spider-Man", y: "2012", ty: "Movie", u: "Earth-120703", rq: true, ott: ["Netflix", "SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-amazing-spider-man-2012.webp" },
+            { act: "Legacy", t: "The Amazing Spider-Man 2", y: "2014", ty: "Movie", u: "Earth-120703", rq: true, ott: ["Netflix", "SonyLIV", "Prime Video"], img: "marvel-movies-poster/the-amazing-spider-man-2-2014.webp" },
+            { act: "Legacy", t: "X-Men: First Class", y: "2011", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-first-class-2011.webp" },
+            { act: "Legacy", t: "X-Men Origins: Wolverine", y: "2009", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-origins-wolverine-2009.webp" },
+            { act: "Legacy", t: "X-Men", y: "2000", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-2000.webp" },
+            { act: "Legacy", t: "X2: X-Men United", y: "2003", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x2-x-men-united-2003.webp" },
+            { act: "Legacy", t: "X-Men: The Last Stand", y: "2006", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men the-last-stand-2006.webp" },
+            { act: "Legacy", t: "The Wolverine", y: "2013", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-wolverine-2013.webp" },
+            { act: "Legacy", t: "X-Men: Days of Future Past", y: "2014", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-days-of-future-past-2014.webp" },
+            { act: "Legacy", t: "X-Men: Apocalypse", y: "2016", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men apocalypse-2016.webp" },
+            { act: "Legacy", t: "Dark Phoenix", y: "2019", ty: "Movie", u: "Earth-10005", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/dark-phoenix-2019.webp" },
+            { act: "Legacy", t: "The New Mutants", y: "2020", ty: "Movie", u: "Earth-10005", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-new-mutants-2020.webp" },
+            { act: "Legacy", t: "Logan", y: "2017", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/logan-2017.webp" },
+            { act: "Legacy", t: "Deadpool", y: "2016", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/deadpool-2016.webp" },
+            { act: "Legacy", t: "Deadpool 2", y: "2018", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/deadpool-2-2018.webp" },
+
+            // ACT III
+            { act: "Infinity Saga", t: "Captain America: The First Avenger", y: "2011", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-the-first-avenger-2011.webp" },
+            { act: "Infinity Saga", t: "Agent Carter (One-Shot)", y: "2013", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agent-carter(one-shot)-2013.webp" },
+            { act: "Infinity Saga", t: "Agent Carter (Seasons 1-2)", y: "2015", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agent-carter-2015.webp" },
+            { act: "Infinity Saga", t: "Captain Marvel", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-marvel-2019.webp" },
+            { act: "Infinity Saga", t: "Iron Man", y: "2008", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-2008.webp" },
+            { act: "Infinity Saga", t: "Iron Man 2", y: "2010", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-2-2010.webp" },
+            { act: "Infinity Saga", t: "The Incredible Hulk", y: "2008", ty: "Movie", u: "Earth-616", rq: true, ott: ["Prime Video", "Disney+ Hotstar"], img: "marvel-movies-poster/the-incredible-hulk-2008.webp" },
+            { act: "Infinity Saga", t: "A Funny Thing Happened...", y: "2011", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/a-funny-thing-happened...-2011.webp" },
+            { act: "Infinity Saga", t: "The Consultant", y: "2011", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-consultant-2011.webp" },
+            { act: "Infinity Saga", t: "Thor", y: "2011", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-2011.webp" },
+            { act: "Infinity Saga", t: "The Avengers", y: "2012", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-avengers-2012.webp" },
+            { act: "Infinity Saga", t: "Item 47", y: "2012", ty: "Short", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/item-47-2012.webp" },
+            { act: "Infinity Saga", t: "Iron Man 3", y: "2013", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-man-3-2013.webp" },
+            { act: "Infinity Saga", t: "All Hail the King", y: "2014", ty: "Short", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/all-hail-the-king-2014.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 1-7)", y: "2013", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Thor: The Dark World", y: "2013", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-the-dark-world-2013.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 8-16)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Captain America: The Winter Soldier", y: "2014", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-the-winter-soldier-2014.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S1 Eps 17-22)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Guardians of the Galaxy", y: "2014", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardian-of-the-galaxy-2014.webp" },
+            { act: "Infinity Saga", t: "Guardians of the Galaxy Vol. 2", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardian-of-the-galaxy-vol-2-2017.webp" },
+            { act: "Infinity Saga", t: "I Am Groot (Seasons 1-2)", y: "2022", ty: "Shorts", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/i-am-groot-2022.webp" },
+            { act: "Infinity Saga", t: "Daredevil (Season 1)", y: "2015", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
+            { act: "Infinity Saga", t: "Jessica Jones (Season 1)", y: "2015", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S2 Eps 1-19)", y: "2014", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Avengers: Age of Ultron", y: "2015", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-age-of-ultron-2015.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S2 Eps 20-22)", y: "2015", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Ant-Man", y: "2015", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-2015.webp" },
+            { act: "Infinity Saga", t: "Daredevil (Season 2)", y: "2016", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
+            { act: "Infinity Saga", t: "Luke Cage (Season 1)", y: "2016", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/luke-cage-2016.webp" },
+            { act: "Infinity Saga", t: "Iron Fist (Season 1)", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-fist-2017.webp" },
+            { act: "Infinity Saga", t: "The Defenders", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-defenders-2017.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S3 Eps 1-19)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Captain America: Civil War", y: "2016", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-civil-war-2016.webp" },
+            { act: "Infinity Saga", t: "WHIH Newsfront", y: "2015", ty: "Web Series", u: "Earth-616", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/whih-newsfront-2015.webp" },
+            { act: "Infinity Saga", t: "Black Widow", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-widow-2021.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (S3 Eps 20-22)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Black Panther", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-panther-2018.webp" },
+            { act: "Infinity Saga", t: "Spider-Man: Homecoming", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-homecoming-2017.webp" },
+            { act: "Infinity Saga", t: "The Punisher (Season 1)", y: "2017", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-punisher-2017.webp" },
+            { act: "Infinity Saga", t: "Doctor Strange", y: "2016", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/doctor-strange-2016.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (Season 4)", y: "2016", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Slingshot", y: "2016", ty: "Web Series", u: "Earth-616", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/slingshot-2016.webp" },
+            { act: "Infinity Saga", t: "Jessica Jones (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
+            { act: "Infinity Saga", t: "Luke Cage (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/luke-cage-2016.webp" },
+            { act: "Infinity Saga", t: "Iron Fist (Season 2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/iron-fist-2017.webp" },
+            { act: "Infinity Saga", t: "Daredevil (Season 3)", y: "2018", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/daredevil-2015.webp" },
+            { act: "Infinity Saga", t: "The Punisher (Season 2)", y: "2019", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-punisher-2017.webp" },
+            { act: "Infinity Saga", t: "Jessica Jones (Season 3)", y: "2019", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/jessica-jones-2015.webp" },
+            { act: "Infinity Saga", t: "Inhumans", y: "2017", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/inhumans-2017.webp" },
+            { act: "Infinity Saga", t: "Runaways (Seasons 1-3)", y: "2017", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/runaways-2017.webp" },
+            { act: "Infinity Saga", t: "Cloak & Dagger (Seasons 1-2)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Prime Video"], img: "marvel-movies-poster/cloak-and-dagger-2018.webp" },
+            { act: "Infinity Saga", t: "Helstrom", y: "2020", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/helstrom-2020.webp" },
+            { act: "Infinity Saga", t: "Thor: Ragnarok", y: "2017", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-ragnarok-2017.webp" },
+            { act: "Infinity Saga", t: "Team Thor / Team Darryl", y: "2016", ty: "Shorts", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar", "YouTube"], img: "marvel-movies-poster/team-thor-team-darry-2016.webp" },
+            { act: "Infinity Saga", t: "Ant-Man and the Wasp", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-and-the-wasp-2018.webp" },
+            { act: "Infinity Saga", t: "Agents of S.H.I.E.L.D. (Seasons 5-7)", y: "2018", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agents-of-s.h.i.e.l.d-2013.webp" },
+            { act: "Infinity Saga", t: "Avengers: Infinity War", y: "2018", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-infinity-war-2018.webp" },
+            { act: "Infinity Saga", t: "Avengers: Endgame", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/avengers-endgame-2019.webp" },
+
+            // ACT IV
+            { act: "Spider-Verse", t: "Venom", y: "2018", ty: "Movie", u: "Earth-688", rq: true, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/venom-2018.webp" },
+            { act: "Spider-Verse", t: "Spider-Man: Into the Spider-Verse", y: "2018", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Prime Video", "SonyLIV"], img: "marvel-movies-poster/spider-man-into-the-spider-verse-2018.webp" },
+            { act: "Spider-Verse", t: "Spider-Ham: Caught in a Ham", y: "2019", ty: "Short", u: "Earth-8311", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/spider-ham-caught-in-a-ham-2021.webp" },
+            { act: "Spider-Verse", t: "Venom: Let There Be Carnage", y: "2021", ty: "Movie", u: "Earth-688", rq: true, ott: ["Netflix", "Prime Video"], img: "marvel-movies-poster/venom-let-there-be-carnage-2021.webp" },
+            { act: "Spider-Verse", t: "Morbius", y: "2022", ty: "Movie", u: "Earth-688", rq: false, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/morbius-2022.webp" },
+            { act: "Spider-Verse", t: "Madame Web", y: "2024", ty: "Movie", u: "Unknown", rq: false, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/madame-web-2024.webp" },
+            { act: "Spider-Verse", t: "Spider-Man: Across the Spider-Verse", y: "2023", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Netflix", "Prime Video", "SonyLIV"], img: "marvel-movies-poster/spider-man-across-the-spider-verse-2023.webp" },
+            { act: "Spider-Verse", t: "The Spider Within", y: "2023", ty: "Short", u: "Earth-1610", rq: false, ott: ["YouTube"], img: "marvel-movies-poster/the-spider-within-2023.webp" },
+            { act: "Spider-Verse", t: "Kraven the Hunter", y: "2024", ty: "Movie", u: "Earth-688", rq: false, ott: ["Theaters"], img: "marvel-movies-poster/kraven-the-hunter-2024.webp" },
+            { act: "Spider-Verse", t: "Venom: The Last Dance", y: "2024", ty: "Movie", u: "Earth-688", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/venom-the-last-dance-2024.webp" },
+            { act: "Spider-Verse", t: "Spider-Man: Beyond the Spider-Verse", y: "2027", ty: "Animation", u: "Earth-1610", rq: true, ott: ["Upcoming"], img: "marvel-movies-poster/spider-man-beyon-the-spider-verse-2027.webp" },
+            { act: "Spider-Verse", t: "Spider-Noir", y: "2026", ty: "Series", u: "Earth-Noir", rq: false, ott: ["Prime Video (Upcoming)"], img: "marvel-movies-poster/spider-noir-2026.webp" },
+
+            // ACT V
+            { act: "Multiverse Saga", t: "Loki (Season 1)", y: "2021", ty: "Series", u: "Outside Time", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/loki-2021.webp" },
+            { act: "Multiverse Saga", t: "What If...? (Season 1)", y: "2021", ty: "Animation", u: "Various", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/what-if...-2021.webp" },
+            { act: "Multiverse Saga", t: "WandaVision", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/wandavision-2021.webp" },
+            { act: "Multiverse Saga", t: "The Falcon and the Winter Soldier", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-falcon-and-the-winter-soldier-2021.webp" },
+            { act: "Multiverse Saga", t: "Shang-Chi and the Ten Rings", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/shang-chi-and-the-ten-rings-2021.webp" },
+            { act: "Multiverse Saga", t: "Eternals", y: "2021", ty: "Movie", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/eternals-2021.webp" },
+            { act: "Multiverse Saga", t: "Spider-Man: Far From Home", y: "2019", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-far-from-home-2019.webp" },
+            { act: "Multiverse Saga", t: "Spider-Man: No Way Home", y: "2021", ty: "Movie", u: "Earth-616", rq: true, ott: ["Netflix", "SonyLIV"], img: "marvel-movies-poster/spider-man-no-way-home-2021.webp" },
+            { act: "Multiverse Saga", t: "Doctor Strange in the Multiverse of Madness", y: "2022", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/doctor-strange-in-the-multiverse-2022.webp" },
+            { act: "Multiverse Saga", t: "Hawkeye", y: "2021", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/hawkeye-2021.webp" },
+            { act: "Multiverse Saga", t: "Moon Knight", y: "2022", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/moon-knight-2022.webp" },
+            { act: "Multiverse Saga", t: "Black Panther: Wakanda Forever", y: "2022", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/black-panther-wakanda-forever-2022.webp" },
+            { act: "Multiverse Saga", t: "She-Hulk: Attorney at Law", y: "2022", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/she-hulk-attorney-at-law-2022.webp" },
+            { act: "Multiverse Saga", t: "Ms. Marvel", y: "2022", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ms.marvel-2022.webp" },
+            { act: "Multiverse Saga", t: "Thor: Love and Thunder", y: "2022", ty: "Movie", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/thor-love-and-thunder-2022.webp" },
+            { act: "Multiverse Saga", t: "Werewolf by Night", y: "2022", ty: "Special", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/werewolf-by-night-2022.webp" },
+            { act: "Multiverse Saga", t: "GotG Holiday Special", y: "2022", ty: "Special", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/gotg-holiday-special-2022.webp" },
+            { act: "Multiverse Saga", t: "Guardians of the Galaxy Vol. 3", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/guardians-of-the-galaxy-vol-3-2023.webp" },
+            { act: "Multiverse Saga", t: "Ant-Man and the Wasp: Quantumania", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/ant-man-and-the-wasp-quantumania-2023.webp" },
+            { act: "Multiverse Saga", t: "Secret Invasion", y: "2023", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/secret-invasion-2023.webp" },
+            { act: "Multiverse Saga", t: "The Marvels", y: "2023", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/the-marvels-2023.webp" },
+            { act: "Multiverse Saga", t: "Loki (Season 2)", y: "2023", ty: "Series", u: "Outside Time", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/loki-2021.webp" },
+            { act: "Multiverse Saga", t: "What If...? (Season 2)", y: "2023", ty: "Animation", u: "Various", rq: false, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/what-if...-2021.webp" },
+            { act: "Multiverse Saga", t: "Echo", y: "2024", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/echo-2024.webp" },
+            { act: "Multiverse Saga", t: "X-Men '97 (Season 1)", y: "2024", ty: "Animation", u: "Earth-92131", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/x-men-97-2024.webp" },
+            { act: "Multiverse Saga", t: "Deadpool & Wolverine", y: "2024", ty: "Movie", u: "Earth-10005", rq: true, ott: ["Disney+ Hotstar", "Theaters"], img: "marvel-movies-poster/deadpool-and-wolverine-2024.webp" },
+            { act: "Multiverse Saga", t: "Agatha All Along", y: "2024", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/agatha-all-along-2024.webp" },
+            { act: "Multiverse Saga", t: "Captain America: Brave New World", y: "2025", ty: "Movie", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar"], img: "marvel-movies-poster/captain-america-brave-new-world-2025.webp" },
+            { act: "Multiverse Saga", t: "Daredevil: Born Again", y: "2025", ty: "Series", u: "Earth-616", rq: true, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/daredevil-born-again-2025.webp" },
+            { act: "Multiverse Saga", t: "Thunderbolts*", y: "2025", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/thunderbolts-2025.webp" },
+            { act: "Multiverse Saga", t: "The Fantastic Four: First Steps", y: "2025", ty: "Movie", u: "Alternate", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/the-fantastic-four-first-steps-2025.webp" },
+            { act: "Multiverse Saga", t: "Ironheart", y: "2025", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/ironheart-2025.webp" },
+            { act: "Multiverse Saga", t: "Marvel Zombies", y: "TBD", ty: "Animation", u: "Alternate", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/marvel-zombies-2025.webp" },
+            { act: "Multiverse Saga", t: "Eyes of Wakanda", y: "2025", ty: "Animation", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/eyes-of-wakanda-2025.webp" },
+            { act: "Multiverse Saga", t: "Your Friendly Neighborhood Spider-Man", y: "TBD", ty: "Animation", u: "Alternate", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/your-friendly-neighborhood-spider-man-2025.webp" },
+            { act: "Multiverse Saga", t: "Wonder Man", y: "TBD", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/wonder-man-2026.webp" },
+            { act: "Multiverse Saga", t: "Vision Quest", y: "TBD", ty: "Series", u: "Earth-616", rq: false, ott: ["Disney+ Hotstar (Upcoming)"], img: "marvel-movies-poster/visionquest-2026.webp" },
+            { act: "Multiverse Saga", t: "Blade", y: "TBD", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters (Upcoming)"], img: "marvel-movies-poster/blade-2027.webp" },
+            { act: "Multiverse Saga", t: "Avengers: Doomsday", y: "2026", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/avenger-doomstay-2026.webp" },
+            { act: "Multiverse Saga", t: "Avengers: Secret Wars", y: "2027", ty: "Movie", u: "Earth-616", rq: true, ott: ["Theaters"], img: "marvel-movies-poster/avengers-secret-wars-2027.webp" }
+        ];
+
+        
+        const gradClasses = ["grad-616", "grad-10005", "grad-96283", "grad-120703", "grad-688", "grad-1610", "grad-legacy"];
+        function getRandomGradient(id) {
+            let hash = 0;
+            for (let i = 0; i < id.length; i++) hash = id.charCodeAt(i) + ((hash << 5) - hash);
+            return gradClasses[Math.abs(hash) % gradClasses.length];
+        }
+        
+        function getGradientClass(universe) {
+            if (universe.includes("616")) return "grad-616";
+            if (universe.includes("10005")) return "grad-10005";
+            if (universe.includes("96283")) return "grad-96283";
+            if (universe.includes("120703")) return "grad-120703";
+            if (universe.includes("688")) return "grad-688";
+            if (universe.includes("1610")) return "grad-1610";
+            return "grad-legacy";
+        }
+
+        function getAbbreviation(title) {
+            const words = title.replace(/[^a-zA-Z0-9 ]/g, "").split(" ");
+            if (words.length === 1) return words[0].substring(0, 2).toUpperCase();
+            return (words[0][0] + (words[1]?.[0] || "")).toUpperCase();
+        }
+
+        // --- WATCH TRACKING LOGIC ---
+        function getItemId(item) {
+            return (item.t + "_" + item.y).replace(/[^a-zA-Z0-9_]/g, '');
+        }
+
+        function getWatchedList() {
+            try {
+                return JSON.parse(localStorage.getItem('omniverseWatched')) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveWatchedList(list) {
+            localStorage.setItem('omniverseWatched', JSON.stringify(list));
+        }
+
+        let currentOpenItemIndex = null;
+
+        function toggleCurrentWatchStatus() {
+            if (currentOpenItemIndex === null) return;
+            const item = currentFilteredData[currentOpenItemIndex];
+            const itemId = getItemId(item);
+            let watched = getWatchedList();
+
+            if (watched.includes(itemId)) {
+                watched = watched.filter(id => id !== itemId);
+            } else {
+                watched.push(itemId);
+            }
+            saveWatchedList(watched);
+
+            // Re-render specifics
+            renderCards();
+            updateModalWatchButton(item, watched.includes(itemId));
+        }
+
+        function updateModalWatchButton(item, isWatched) {
+            const btn = document.getElementById('modalWatchBtn');
+            if (isWatched) {
+                btn.className = "w-full mb-8 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-95 shadow-xl bg-apple-card text-white border border-apple-border hover:bg-apple-hover";
+                btn.innerHTML = `
+                    <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                    Completed
+                `;
+            } else {
+                btn.className = "w-full mb-8 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-95 shadow-xl bg-apple-blue text-white hover:bg-blue-600 shadow-apple-blue/20";
+                btn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    Mark as Watched
+                `;
+            }
+        }
+
+        // --- CUSTOM FILTERS LOGIC ---
+        let currentActFilter = 'All';
+        let currentPlatformFilter = 'All';
+
+        function setupCustomDropdown(containerId, btnId, textId, menuId, valueCallback) {
+            const container = document.getElementById(containerId);
+            const btn = document.getElementById(btnId);
+            const menu = document.getElementById(menuId);
+            const text = document.getElementById(textId);
+            const items = menu.querySelectorAll('li');
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Close others
+                document.querySelectorAll('.custom-dropdown-menu').forEach(m => {
+                    if (m !== menu) {
+                        m.classList.add('opacity-0', 'scale-95');
+                        setTimeout(() => m.classList.add('hidden'), 200);
+                    }
+                });
+
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    setTimeout(() => {
+                        menu.classList.remove('opacity-0', 'scale-95');
+                    }, 10);
+                } else {
+                    menu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => menu.classList.add('hidden'), 200);
+                }
+            });
+
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    text.textContent = item.textContent;
+                    valueCallback(item.dataset.value);
+                    menu.classList.add('opacity-0', 'scale-95');
+                    setTimeout(() => menu.classList.add('hidden'), 200);
+                });
+            });
+        }
+
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.custom-dropdown-menu').forEach(m => {
+                m.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => m.classList.add('hidden'), 200);
+            });
+        });
+
+        // Initialize Dropdowns
+        setupCustomDropdown('actDropdownContainer', 'actDropdownBtn', 'actDropdownText', 'actDropdownMenu', (val) => {
+            currentActFilter = val;
+            renderCards();
+        });
+
+        setupCustomDropdown('platformDropdownContainer', 'platformDropdownBtn', 'platformDropdownText', 'platformDropdownMenu', (val) => {
+            currentPlatformFilter = val;
+            renderCards();
+        });
+
+        // --- DOM ELEMENTS ---
+        const grid = document.getElementById('grid');
+        const searchInput = document.getElementById('searchInput');
+        const requiredFilter = document.getElementById('requiredFilter');
+        const resultCount = document.getElementById('resultCount');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const progressPercentage = document.getElementById('progressPercentage');
+
+        let currentFilteredData = [];
+
+        function renderCards() {
+            const search = searchInput.value.toLowerCase();
+            const act = currentActFilter;
+            const platform = currentPlatformFilter;
+            const required = requiredFilter.checked;
+            const watchedIds = getWatchedList();
+
+            currentFilteredData = watchData.filter(item => {
+                const matchesSearch = item.t.toLowerCase().includes(search) || item.u.toLowerCase().includes(search);
+                const matchesAct = act === "All" || item.act === act;
+                const matchesPlatform = platform === "All" || item.ott.some(p => p.includes(platform));
+                const matchesRequired = !required || item.rq === true;
+                return matchesSearch && matchesAct && matchesPlatform && matchesRequired;
+            });
+
+            // Update Progress Bar based on unfiltered total vs watched
+            const totalItems = watchData.length;
+            const totalWatched = watchData.filter(item => watchedIds.includes(getItemId(item))).length;
+            const percent = totalItems === 0 ? 0 : Math.round((totalWatched / totalItems) * 100);
+
+            progressBar.style.width = percent + '%';
+            progressText.textContent = `${totalWatched} / ${totalItems}`;
+            progressPercentage.textContent = percent + '%';
+
+            resultCount.innerHTML = `Displaying <span class="text-white font-semibold">${currentFilteredData.length}</span> titles from the database`;
+            grid.innerHTML = '';
+
+            currentFilteredData.forEach((item, index) => {
+                const delay = (index % 20) * 50; // Stagger animation
+                const gradClass = getGradientClass(item.u);
+                const abbr = getAbbreviation(item.t);
+                const itemId = getItemId(item);
+                const isWatched = watchedIds.includes(itemId);
+
+                const card = `
+                    <article onclick="openModal(${index})" class="group cursor-pointer flex flex-col gap-3 opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms;">
+                        <!-- Premium Generative Poster -->
+                        <div class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out transform group-hover:scale-[1.03] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] border border-apple-border bg-apple-card">
+                            
+                            <!-- Watched Overlay Dimmer -->
+                            ${isWatched ? `<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-20 transition-opacity"></div>` : ''}
+
+                            <!-- Gradient Fallback Base -->
+                            <div class="absolute inset-0 ${gradClass} opacity-80 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+                            
+                            <!-- Optional Image -->
+                            ${item.img ? `<img src="${item.img}" alt="${item.t}" class="absolute inset-0 w-full h-full object-cover z-0 transition-transform duration-700 group-hover:scale-105" onerror="this.style.display='none'; document.getElementById('abbr-${index}').style.display='block';" />` : ''}
+                            
+                            <!-- Top Overlay for Badge Contrast if Image is Present -->
+                            ${item.img ? `<div class="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-black/60 to-transparent z-10 pointer-events-none"></div>` : ''}
+                            
+                            <!-- Internal Poster Layout -->
+                            <div class="absolute inset-0 p-4 flex flex-col justify-between z-10 pointer-events-none">
+                                <div class="flex justify-between items-start">
+                                    <span class="backdrop-blur-xl bg-black/40 px-2.5 py-1 rounded-full text-[10px] font-semibold text-white/90 border border-apple-border uppercase tracking-wider shadow-sm">${item.ty}</span>
+                                    ${item.rq ? `<span class="bg-white text-black px-2 py-1 rounded text-[10px] font-bold uppercase tracking-wider shadow-lg">Core</span>` : ''}
+                                </div>
+                                <h2 id="abbr-${index}" class="text-5xl font-black text-white/90 tracking-tighter mix-blend-overlay opacity-40 select-none z-10" style="display: ${item.img ? 'none' : 'block'};">${abbr}</h2>
+                            </div>
+
+                            <!-- Watched Checkmark Indicator -->
+                            ${isWatched ? `
+                                <div class="absolute inset-0 z-30 flex items-center justify-center pointer-events-none drop-shadow-2xl">
+                                    <div class="bg-black/60 backdrop-blur-md p-4 rounded-full border border-apple-border text-green-400 scale-100 transition-transform">
+                                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <!-- Metadata below poster -->
+                        <div class="px-1 ${isWatched ? 'opacity-40' : 'opacity-100'} transition-opacity">
+                            <h3 class="text-base font-semibold text-white leading-tight truncate group-hover:text-apple-blue transition-colors">${item.t}</h3>
+                            <p class="text-xs text-apple-muted mt-0.5 truncate">${item.y} <span class="mx-1">•</span> ${item.u}</p>
+                        </div>
+                    </article>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        const modal = document.getElementById('detailModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalPoster = document.getElementById('modalPoster');
+
+        function openModal(index) {
+            currentOpenItemIndex = index;
+            const item = currentFilteredData[index];
+            const gradClass = getGradientClass(item.u);
+            const watchedIds = getWatchedList();
+            const isWatched = watchedIds.includes(getItemId(item));
+
+            // Populate Data
+            document.getElementById('modalTitle').textContent = item.t;
+            document.getElementById('modalUniverse').textContent = item.act + ' — ' + item.u;
+            document.getElementById('modalYear').textContent = item.y;
+            document.getElementById('modalType').textContent = item.ty;
+            document.getElementById('modalRequiredBadge').style.display = item.rq ? 'inline-block' : 'none';
+
+            // Set dynamic header gradient / image
+            const modalGradientBg = document.getElementById('modalGradientBg');
+            const modalImgBg = document.getElementById('modalImgBg');
+
+            modalGradientBg.className = `absolute inset-0 z-0 ${gradClass}`;
+
+            if (item.img) {
+                modalImgBg.src = item.img;
+                modalImgBg.style.display = 'block';
+            } else {
+                modalImgBg.style.display = 'none';
+                modalImgBg.src = '';
+            }
+
+            // Update Watch Button UI
+            updateModalWatchButton(item, isWatched);
+
+            // Populate Platforms
+            const platformsDiv = document.getElementById('modalPlatforms');
+            const ottLogos = {
+                "YouTube": '<svg class="w-5 h-5 mr-3 text-[#FF0000] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>',
+                "Apple TV": '<svg class="w-5 h-5 mr-3 text-white shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.126 3.792 3.04 1.52-.087 2.112-.987 3.96-.987 1.826 0 2.373.987 3.982.96 1.666-.026 2.686-1.493 3.684-2.959 1.156-1.693 1.636-3.328 1.662-3.415-.034-.013-3.184-1.22-3.216-4.857-.026-3.04 2.484-4.512 2.597-4.582-1.417-2.074-3.626-2.356-4.417-2.415-1.996-.134-3.818 1.151-4.642 1.151zm-1.03-2.127c.833-1.008 1.393-2.41 1.24-3.813-1.192.048-2.659.794-3.513 1.821-.762.899-1.416 2.336-1.241 3.714 1.341.104 2.684-.712 3.514-1.722z"/></svg>',
+                "Prime Video": '<svg class="w-5 h-5 mr-3 text-[#00A8E1] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13.784 15.65c-2.41.97-5.59 1.32-8.59.83-1.57-.26-2.58-.62-2.58-.62.3-.43.79-1.2 1.14-1.89s.89-1.63 1.15-2.09c.28-.48.61-.43 1.01-.2 1.45.86 3.53 1.38 5.61 1.42 1.93.03 3.58-.33 4.25-.86.51-.4.65-1.02.32-1.55-.41-.65-1.39-1-2.99-1.12-1.19-.09-2.71-.27-4.43-.65-1.72-.38-3.19-1-4.22-1.92C3.12 5.8 2.87 4.23 3.68 2.69c.8-1.5 2.55-2.22 4.67-2.45 2.62-.28 5.48.24 7.6 1.25.75.36 1.43.76 2 1.16 0 0-.4 1.1-.92 2.45-.48 1.23-.74 1.95-.74 1.95-.3-.21-.72-.47-1.23-.74-1.34-.73-3.05-1.08-4.82-1.08-1.51 0-2.68.21-3.21.57-.46.31-.57.77-.33 1.18.25.45.98.74 2.21.9 1.44.18 3.3.45 5.09.95 1.83.51 3.19 1.28 3.96 2.37.76 1.07 1 2.51.52 4.09-.59 2.03-2.14 2.76-4.69 3.23zM21.24 16.51c-.69-.47-1.15-.81-1.15-.81-.13-.1-.32-.1-.52.01l-1.35.85c-.2.13-.26.35-.11.51l2.45 2.7c.12.13.32.1.42-.06l1.9-3.24c.09-.16 0-.37-.18-.43l-1.46-.53s-.48-.16-1.16-.48zM15.42 20.31s-3.76 2.75-8.22 2.75c-4.14 0-6.62-1.84-6.62-1.84s1.25 1.55 3.51 2.25c2.47.76 5.8.69 8.64-.67 1.83-.88 2.69-2.49 2.69-2.49z"/></svg>',
+                "Disney+ Hotstar": '<svg class="w-5 h-5 mr-3 text-[#113CCF] shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M10.15 6.07c-2.45-.63-5.23 0-6.4 1.55-1.1 1.46-.94 3.7.35 5 1.43 1.44 4 1.63 6.13 2.1 2.25.5 3.9 1.17 3.9 2.6 0 1.28-1.5 1.76-3.26 1.76-2 0-3.64-.6-4.57-1.3l-.7 1.58c1.33.95 3.4 1.56 5.46 1.56 2.7 0 4.95-1.14 4.95-3.5 0-2.44-2.05-3-4.53-3.66-2.3-.64-3.65-.96-3.65-2 0-.82.88-1.4 2.37-1.4 1.25 0 2.58.4 3.65 1.12l.78-1.6c-1.3-.85-2.85-1.28-4.48-1.28v.02zM21 9.4h-2.35V7.05h-1.63V9.4h-2.35v1.62h2.35v2.35h1.63v-2.35H21V9.4z"/></svg>'
+            };
+
+            platformsDiv.innerHTML = item.ott.map(p => {
+                let logoSvg = '<svg class="w-5 h-5 mr-3 text-apple-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>';
+                for (const [key, svg] of Object.entries(ottLogos)) {
+                    if (p.includes(key)) {
+                        logoSvg = svg;
+                        break;
+                    }
+                }
+
+                return `
+                    <button class="w-full text-left flex items-center justify-between bg-apple-hover hover:bg-apple-border transition-colors rounded-xl p-4 border border-apple-border">
+                        <div class="flex items-center">
+                            ${logoSvg}
+                            <span class="font-semibold text-white">${p}</span>
+                        </div>
+                        <svg class="w-5 h-5 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                `;
+            }).join('');
+
+            // Description logic
+            let desc = `This project belongs to ${item.u} and was released in ${item.y}. It is classified as a ${item.ty}. `;
+            if (item.rq) desc += "It is considered a highly critical watch for understanding the core overarching narrative of the Multiverse Saga and upcoming Secret Wars.";
+            else desc += "While not strictly mandatory for the main narrative, it provides excellent flavor and historical context for the expansive Marvel Multiverse.";
+            document.getElementById('modalDesc').textContent = desc;
+
+            // Animate In
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+            modalContent.classList.remove('translate-y-full', 'md:translate-y-10');
+            modalContent.classList.add('translate-y-0');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('translate-y-0');
+            modalContent.classList.add('translate-y-full', 'md:translate-y-10');
+            document.body.style.overflow = 'auto';
+            currentOpenItemIndex = null;
+        }
+
+        // Event Listeners
+        searchInput.addEventListener('input', renderCards);
+        requiredFilter.addEventListener('change', renderCards);
+
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('opacity-0')) {
+                closeModal();
+            }
+        });
+
+        // Initial Render
+        renderCards();
+    </script>
+
+    
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuContent = document.getElementById('mobileMenuContent');
+        const hamburgerIcon = document.getElementById('hamburgerIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuContent.classList.toggle('hidden');
+                mobileMenuContent.classList.toggle('flex');
+                hamburgerIcon.classList.toggle('hidden');
+                closeIcon.classList.toggle('hidden');
+                
+                if (!mobileMenuContent.classList.contains('hidden')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 1024) {
+                    mobileMenuContent.classList.remove('hidden');
+                    mobileMenuContent.classList.add('flex');
+                    document.body.style.overflow = '';
+                } else if (!hamburgerIcon.classList.contains('hidden')) {
+                    mobileMenuContent.classList.add('hidden');
+                    mobileMenuContent.classList.remove('flex');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
