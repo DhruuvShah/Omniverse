@@ -8,6 +8,12 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Omniverse | Marvel Archive</title>
+    <script>
+        (function () {
+            var saved = localStorage.getItem('omniverseTheme');
+            document.documentElement.setAttribute('data-theme', saved === 'light' ? 'light' : 'dark');
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,12 +35,16 @@
                     fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] },
                     colors: {
                         apple: {
-                            bg: '#000000',
-                            card: '#1c1c1e',
-                            text: '#f5f5f7',
-                            muted: '#86868b',
-                            border: '#333336',
-                            blue: '#0a84ff'
+                            bg: 'rgb(var(--apple-bg) / <alpha-value>)',
+                            card: 'rgb(var(--apple-card) / <alpha-value>)',
+                            hover: 'rgb(var(--apple-hover) / <alpha-value>)',
+                            active: 'rgb(var(--apple-active) / <alpha-value>)',
+                            well: 'rgb(var(--apple-well) / <alpha-value>)',
+                            scrim: 'rgb(var(--apple-scrim) / <alpha-value>)',
+                            text: 'rgb(var(--apple-text) / <alpha-value>)',
+                            muted: 'rgb(var(--apple-muted) / <alpha-value>)',
+                            border: 'rgb(var(--apple-border) / <alpha-value>)',
+                            blue: 'rgb(var(--apple-accent) / <alpha-value>)'
                         }
                     },
                     animation: {
@@ -56,10 +66,43 @@
         }
     </script>
     <style>
+        :root {
+            --apple-bg: 0 0 0;
+            --apple-card: 28 28 30;
+            --apple-hover: 44 44 46;
+            --apple-active: 58 58 60;
+            --apple-well: 0 0 0;
+            --apple-scrim: 0 0 0;
+            --apple-text: 245 245 247;
+            --apple-muted: 134 134 139;
+            --apple-border: 51 51 54;
+            --apple-accent: 10 132 255;
+            --shadow-heavy: rgba(0, 0, 0, 0.8);
+            --nav-glass-alpha: 0.7;
+            --modal-glass-alpha: 0.85;
+            --modal-border-alpha: 0.1;
+        }
+
+        [data-theme="light"] {
+            --apple-bg: 245 245 247;
+            --apple-card: 255 255 255;
+            --apple-hover: 235 235 240;
+            --apple-active: 224 224 229;
+            --apple-well: 229 229 234;
+            --apple-text: 29 29 31;
+            --apple-muted: 108 108 115;
+            --apple-border: 214 214 219;
+            --shadow-heavy: rgba(0, 0, 0, 0.16);
+            --nav-glass-alpha: 0.75;
+            --modal-glass-alpha: 0.9;
+            --modal-border-alpha: 0.06;
+        }
+
         body {
-            background-color: #000000;
-            color: #f5f5f7;
+            background-color: rgb(var(--apple-bg));
+            color: rgb(var(--apple-text));
             overscroll-behavior-y: none;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         ::-webkit-scrollbar {
@@ -67,30 +110,32 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #000000;
+            background: rgb(var(--apple-bg));
         }
 
         ::-webkit-scrollbar-thumb {
-            background: #333336;
+            background: rgb(var(--apple-border));
             border-radius: 9999px;
-            border: 3px solid #000000;
+            border: 3px solid rgb(var(--apple-bg));
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #48484a;
+            background: rgb(var(--apple-muted));
         }
 
         .glass-nav {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgb(var(--apple-bg) / var(--nav-glass-alpha));
             backdrop-filter: saturate(180%) blur(20px);
             -webkit-backdrop-filter: saturate(180%) blur(20px);
+            transition: background-color 0.25s ease;
         }
 
         .glass-modal {
-            background: rgba(28, 28, 30, 0.85);
+            background: rgb(var(--apple-card) / var(--modal-glass-alpha));
             backdrop-filter: saturate(180%) blur(40px);
             -webkit-backdrop-filter: saturate(180%) blur(40px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgb(var(--apple-text) / var(--modal-border-alpha));
+            transition: background-color 0.25s ease;
         }
 
         .hide-scroll {
@@ -150,21 +195,38 @@
     <nav class="sticky top-0 z-50 glass-nav border-b border-apple-border mb-8 relative">
         <!-- Mobile Header Bar -->
         <div class="px-6 md:px-12 py-4 max-w-screen-2xl mx-auto flex items-center justify-between lg:hidden">
-            <span class="text-white font-bold tracking-wide">The Omniverse Database</span>
-            <button id="mobileMenuBtn"
-                class="text-white p-2 focus:outline-none hover:bg-[#2c2c2e] rounded-xl transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"></path>
-                    <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
+            <span class="text-apple-text font-bold tracking-wide">The Omniverse Database</span>
+            <div class="flex items-center gap-1">
+                <button id="themeToggleBtnMobile" aria-label="Toggle theme"
+                    class="theme-toggle-btn text-apple-text p-2 focus:outline-none hover:bg-apple-hover rounded-xl transition-colors">
+                    <svg class="w-5 h-5 theme-icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                    <svg class="w-5 h-5 theme-icon-sun hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                </button>
+                <button id="mobileMenuBtn"
+                    class="text-apple-text p-2 focus:outline-none hover:bg-apple-hover rounded-xl transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="hamburgerIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                        <path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
+
+        <!-- Backdrop for mobile drawer -->
+        <div id="mobileMenuBackdrop"
+            class="hidden opacity-0 fixed inset-0 bg-black/50 z-30 transition-opacity duration-300 lg:hidden"></div>
 
         <!-- Collapsible Menu Content / Desktop Row -->
         <div id="mobileMenuContent"
-            class="hidden lg:flex flex-col items-stretch justify-between gap-6 lg:gap-4 w-full max-w-screen-2xl mx-auto px-6 md:px-12 py-6 lg:py-4 absolute lg:static top-full left-0 glass-nav lg:bg-transparent shadow-2xl lg:shadow-none border-b border-apple-border lg:border-none z-40 max-h-[calc(100vh-70px)] overflow-y-auto lg:overflow-visible lg:max-h-none">
+            class="hidden lg:flex flex-col items-stretch justify-between gap-6 lg:gap-4 w-full max-w-screen-2xl 3xl:max-w-[1800px] 4xl:max-w-[2200px] mx-auto px-6 md:px-12 py-6 lg:py-4 absolute lg:static top-full left-0 glass-nav lg:bg-transparent shadow-2xl lg:shadow-none border-b border-apple-border lg:border-none z-40 max-h-[calc(100vh-70px)] overflow-y-auto lg:overflow-visible lg:max-h-none opacity-0 -translate-y-2 transition-all duration-300 ease-out lg:opacity-100 lg:translate-y-0">
 
             <!-- Tabs Group -->
             <div
@@ -172,22 +234,22 @@
                 <div
                     class="bg-apple-card border border-apple-border p-2 lg:p-1.5 rounded-2xl lg:rounded-full flex flex-col lg:flex-row gap-2 lg:gap-1 w-full lg:w-max">
                     <a href="index.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-apple-text hover:bg-apple-hover/70 text-center lg:text-left">Marvel
                         Movies</a>
                     <a href="marvel-comics.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">Marvel
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-apple-text hover:bg-apple-hover/70 text-center lg:text-left">Marvel
                         Comics</a>
                     <a href="dc-movies.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-[#3a3a3c] text-white shadow-sm text-center lg:text-left">DC
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap bg-apple-active text-apple-text shadow-sm text-center lg:text-left">DC
                         Movies</a>
                     <a href="dc-comics.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">DC
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-apple-text hover:bg-apple-hover/70 text-center lg:text-left">DC
                         Comics</a>
                     <a href="asoiaf-books.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-apple-text hover:bg-apple-hover/70 text-center lg:text-left">ASOIAF
                         Books</a>
                     <a href="asoiaf-screen.html"
-                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-white hover:bg-[#2c2c2e]/70 text-center lg:text-left">ASOIAF
+                        class="px-5 py-3 lg:py-2 rounded-xl lg:rounded-full text-base lg:text-sm font-semibold transition-all whitespace-nowrap text-apple-muted hover:text-apple-text hover:bg-apple-hover/70 text-center lg:text-left">ASOIAF
                         Screen</a>
                 </div>
             </div>
@@ -198,13 +260,13 @@
 
                 <!-- Apple-style Search Bar -->
                 <div class="relative w-full lg:w-[320px] 2xl:w-[400px] shrink-0 group">
-                    <svg class="absolute left-4 lg:left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-apple-muted group-focus-within:text-white transition-colors"
+                    <svg class="absolute left-4 lg:left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-apple-muted group-focus-within:text-apple-text transition-colors"
                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                     <input type="text" id="searchInput" placeholder="Search movies, series, or universes..."
-                        class="w-full bg-apple-card border border-transparent rounded-2xl lg:rounded-full pl-12 lg:pl-10 pr-4 py-3.5 lg:py-2.5 text-base lg:text-sm text-white focus:outline-none focus:border-apple-blue focus:bg-apple-bg focus:ring-4 focus:ring-apple-blue/20 transition-all placeholder-apple-muted">
+                        class="w-full bg-apple-card border border-transparent rounded-2xl lg:rounded-full pl-12 lg:pl-10 pr-4 py-3.5 lg:py-2.5 text-base lg:text-sm text-apple-text focus:outline-none focus:border-apple-blue focus:bg-apple-bg focus:ring-4 focus:ring-apple-blue/20 transition-all placeholder-apple-muted">
                 </div>
 
                 <!-- Custom Segmented Filters -->
@@ -214,7 +276,7 @@
                     <!-- Custom Act Dropdown -->
                     <div class="relative w-full sm:w-auto" id="actDropdownContainer">
                         <button id="actDropdownBtn"
-                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
+                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-apple-text px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-apple-hover focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
                             <span id="actDropdownText">All Timelines</span>
                             <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -224,8 +286,8 @@
                             </svg>
                         </button>
                         <div id="actDropdownMenu"
-                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-56 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
-                            <ul class="py-1 text-base lg:text-sm text-white font-medium">
+                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-56 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_var(--shadow-heavy)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
+                            <ul class="py-1 text-base lg:text-sm text-apple-text font-medium">
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Timelines</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
@@ -253,7 +315,7 @@
                     <!-- Custom Platform Dropdown -->
                     <div class="relative w-full sm:w-auto" id="platformDropdownContainer">
                         <button id="platformDropdownBtn"
-                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-white px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-[#2c2c2e] focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
+                            class="w-full sm:w-auto bg-apple-card text-base lg:text-sm text-apple-text px-5 py-3.5 lg:py-2.5 rounded-2xl lg:rounded-full border border-apple-border hover:bg-apple-hover focus:outline-none focus:border-apple-blue transition-colors flex justify-between items-center gap-3 whitespace-nowrap">
                             <span id="platformDropdownText">All Platforms</span>
                             <svg class="w-5 h-5 lg:w-4 lg:h-4 text-apple-muted" fill="none" stroke="currentColor"
                                 viewBox="0 0 24 24">
@@ -263,8 +325,8 @@
                             </svg>
                         </button>
                         <div id="platformDropdownMenu"
-                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-48 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.8)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
-                            <ul class="py-1 text-base lg:text-sm text-white font-medium">
+                            class="absolute left-0 lg:right-auto lg:left-0 w-full lg:w-48 mt-2 bg-apple-card/95 backdrop-blur-xl border border-apple-border rounded-2xl shadow-[0_10px_40px_var(--shadow-heavy)] hidden opacity-0 scale-95 transition-all duration-200 overflow-hidden custom-dropdown-menu z-50">
+                            <ul class="py-1 text-base lg:text-sm text-apple-text font-medium">
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
                                     data-value="All">All Platforms</li>
                                 <li class="px-5 py-3 lg:py-2.5 hover:bg-apple-blue hover:text-white cursor-pointer transition-colors"
@@ -284,17 +346,30 @@
                     </div>
 
                     <label
-                        class="flex items-center gap-3 lg:gap-2 cursor-pointer bg-apple-card border border-apple-border rounded-2xl lg:rounded-full px-5 py-3.5 lg:py-2.5 hover:bg-[#2c2c2e] transition-colors w-full sm:w-auto justify-center sm:justify-start">
+                        class="flex items-center gap-3 lg:gap-2 cursor-pointer bg-apple-card border border-apple-border rounded-2xl lg:rounded-full px-5 py-3.5 lg:py-2.5 hover:bg-apple-hover transition-colors w-full sm:w-auto justify-center sm:justify-start">
                         <input type="checkbox" id="requiredFilter"
                             class="accent-apple-blue w-5 h-5 lg:w-4 lg:h-4 rounded">
-                        <span class="text-base lg:text-sm font-medium text-white">Required Only</span>
+                        <span class="text-base lg:text-sm font-medium text-apple-text">Required Only</span>
                     </label>
+
+                    <button id="themeToggleBtnDesktop" aria-label="Toggle theme"
+                        class="theme-toggle-btn hidden lg:flex items-center justify-center bg-apple-card border border-apple-border rounded-full w-11 h-11 text-apple-text hover:bg-apple-hover transition-colors shrink-0">
+                        <svg class="w-5 h-5 theme-icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                        <svg class="w-5 h-5 theme-icon-sun hidden" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="pt-12 pb-8 px-6 md:px-12 max-w-screen-2xl mx-auto">
+    <header class="pt-12 pb-8 px-6 md:px-12 max-w-screen-2xl 3xl:max-w-[1800px] 4xl:max-w-[2200px] mx-auto">
         <h1
             class="text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-apple-text via-apple-text to-apple-muted tracking-tighter mb-4">
             THE OMNIVERSE DATABASE</h1>
@@ -304,7 +379,7 @@
 
 
 
-    <main class="px-6 md:px-12 max-w-screen-2xl mx-auto">
+    <main class="px-6 md:px-12 max-w-screen-2xl 3xl:max-w-[1800px] 4xl:max-w-[2200px] mx-auto">
         <!-- Progress Tracker -->
         <div
             class="mb-10 bg-gradient-to-r from-apple-card to-apple-bg border border-apple-border rounded-[2rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center justify-between shadow-2xl relative overflow-hidden">
@@ -314,14 +389,14 @@
             </div>
 
             <div class="relative z-10 text-center md:text-left">
-                <h2 class="text-2xl font-bold text-white mb-1 tracking-tight">Your Omniverse Journey</h2>
+                <h2 class="text-2xl font-bold text-apple-text mb-1 tracking-tight">Your Omniverse Journey</h2>
                 <p class="text-apple-muted text-sm font-medium" id="resultCount">Loading universe...</p>
             </div>
 
             <div class="relative z-10 w-full md:w-1/2 flex items-center gap-5">
                 <span class="text-sm font-bold text-apple-muted w-10 text-right" id="progressPercentage">0%</span>
                 <div
-                    class="flex-1 h-4 bg-black rounded-full overflow-hidden border border-apple-border shadow-inner relative">
+                    class="flex-1 h-4 bg-apple-well rounded-full overflow-hidden border border-apple-border shadow-inner relative">
                     <div id="progressBar"
                         class="h-full bg-gradient-to-r from-blue-600 via-apple-blue to-purple-500 w-0 transition-all duration-1000 ease-out rounded-full relative overflow-hidden">
                         <!-- Shimmer effect on bar -->
@@ -330,12 +405,12 @@
                         </div>
                     </div>
                 </div>
-                <span class="text-base font-bold text-white whitespace-nowrap" id="progressText">0 / 0</span>
+                <span class="text-base font-bold text-apple-text whitespace-nowrap" id="progressText">0 / 0</span>
             </div>
         </div>
 
         <div id="grid"
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12 2xl:gap-x-8 2xl:gap-y-14">
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-5 3xl:grid-cols-6 4xl:grid-cols-7 gap-x-4 gap-y-10 md:gap-x-6 md:gap-y-12 2xl:gap-x-8 2xl:gap-y-14">
             <!-- Cards injected via JS -->
         </div>
     </main>
@@ -361,7 +436,7 @@
                 <img id="modalImgBg" src="" class="absolute inset-0 w-full h-full object-cover z-0 object-top"
                     onerror="this.style.display='none';" />
                 <div
-                    class="absolute inset-0 bg-gradient-to-t from-apple-card via-[#1c1c1e]/40 to-transparent z-10 pointer-events-none">
+                    class="absolute inset-0 bg-gradient-to-t from-apple-scrim via-apple-scrim/40 to-transparent z-10 pointer-events-none">
                 </div>
 
                 <div class="relative z-20">
@@ -1645,7 +1720,7 @@
         function updateModalWatchButton(item, isWatched) {
             const btn = document.getElementById('modalWatchBtn');
             if (isWatched) {
-                btn.className = "w-full mb-8 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-95 shadow-xl bg-apple-card text-white border border-apple-border hover:bg-apple-hover";
+                btn.className = "w-full mb-8 py-4 rounded-2xl font-bold text-sm tracking-wide uppercase flex items-center justify-center gap-3 transition-all duration-300 transform active:scale-95 shadow-xl bg-apple-card text-apple-text border border-apple-border hover:bg-apple-hover";
                 btn.innerHTML = `
                     <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     Completed
@@ -1755,7 +1830,7 @@
             progressText.textContent = `${totalWatched} / ${totalItems}`;
             progressPercentage.textContent = percent + '%';
 
-            resultCount.innerHTML = `Displaying <span class="text-white font-semibold">${currentFilteredData.length}</span> titles from the database`;
+            resultCount.innerHTML = `Displaying <span class="text-apple-text font-semibold">${currentFilteredData.length}</span> titles from the database`;
             grid.innerHTML = '';
 
             currentFilteredData.forEach((item, index) => {
@@ -1768,7 +1843,7 @@
                 const card = `
                     <article onclick="openModal(${index})" class="group cursor-pointer flex flex-col gap-3 opacity-0 animate-fade-in-up" style="animation-delay: ${delay}ms;">
                         <!-- Premium Generative Poster -->
-                        <div class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out transform group-hover:scale-[1.03] group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.8)] border border-apple-border bg-apple-card">
+                        <div class="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ease-out transform group-hover:scale-[1.03] group-hover:shadow-[0_20px_40px_var(--shadow-heavy)] border border-apple-border bg-apple-card">
                             
                             <!-- Watched Overlay Dimmer -->
                             ${isWatched ? `<div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] z-20 transition-opacity"></div>` : ''}
@@ -1803,7 +1878,7 @@
                         
                         <!-- Metadata below poster -->
                         <div class="px-1 ${isWatched ? 'opacity-40' : 'opacity-100'} transition-opacity">
-                            <h3 class="text-base font-semibold text-white leading-tight truncate group-hover:text-apple-blue transition-colors">${item.t}</h3>
+                            <h3 class="text-base font-semibold text-apple-text leading-tight truncate group-hover:text-apple-blue transition-colors">${item.t}</h3>
                             <p class="text-xs text-apple-muted mt-0.5 truncate">${item.y} <span class="mx-1">•</span> ${item.u}</p>
                         </div>
                     </article>
@@ -1885,7 +1960,7 @@
                     <button class="w-full text-left flex items-center justify-between bg-apple-hover hover:bg-apple-border transition-colors rounded-xl p-4 border border-apple-border">
                         <div class="flex items-center">
                             ${logoSvg}
-                            <span class="font-semibold text-white">${p}</span>
+                            <span class="font-semibold text-apple-text">${p}</span>
                         </div>
                         <svg class="w-5 h-5 text-apple-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
@@ -1932,34 +2007,76 @@
     <script>
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenuContent = document.getElementById('mobileMenuContent');
+        const mobileMenuBackdrop = document.getElementById('mobileMenuBackdrop');
         const hamburgerIcon = document.getElementById('hamburgerIcon');
         const closeIcon = document.getElementById('closeIcon');
 
         if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenuContent.classList.toggle('hidden');
-                mobileMenuContent.classList.toggle('flex');
-                hamburgerIcon.classList.toggle('hidden');
-                closeIcon.classList.toggle('hidden');
+            const openMobileMenu = () => {
+                mobileMenuBackdrop.classList.remove('hidden');
+                mobileMenuContent.classList.remove('hidden');
+                mobileMenuContent.classList.add('flex');
+                requestAnimationFrame(() => {
+                    mobileMenuBackdrop.classList.remove('opacity-0');
+                    mobileMenuContent.classList.remove('opacity-0', '-translate-y-2');
+                });
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            };
 
-                if (!mobileMenuContent.classList.contains('hidden')) {
-                    document.body.style.overflow = 'hidden';
+            const closeMobileMenu = () => {
+                mobileMenuBackdrop.classList.add('opacity-0');
+                mobileMenuContent.classList.add('opacity-0', '-translate-y-2');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    mobileMenuBackdrop.classList.add('hidden');
+                    mobileMenuContent.classList.add('hidden');
+                    mobileMenuContent.classList.remove('flex');
+                }, 300);
+            };
+
+            mobileMenuBtn.addEventListener('click', () => {
+                if (mobileMenuContent.classList.contains('hidden')) {
+                    openMobileMenu();
                 } else {
-                    document.body.style.overflow = '';
+                    closeMobileMenu();
                 }
             });
 
+            mobileMenuBackdrop.addEventListener('click', closeMobileMenu);
+
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 1024) {
-                    mobileMenuContent.classList.remove('hidden');
+                    mobileMenuContent.classList.remove('hidden', 'opacity-0', '-translate-y-2');
                     mobileMenuContent.classList.add('flex');
+                    mobileMenuBackdrop.classList.add('hidden', 'opacity-0');
                     document.body.style.overflow = '';
                 } else if (!hamburgerIcon.classList.contains('hidden')) {
-                    mobileMenuContent.classList.add('hidden');
+                    mobileMenuContent.classList.add('hidden', 'opacity-0', '-translate-y-2');
                     mobileMenuContent.classList.remove('flex');
                 }
             });
         }
+
+        // --- THEME TOGGLE ---
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            document.querySelectorAll('.theme-icon-moon').forEach(el => el.classList.toggle('hidden', theme !== 'dark'));
+            document.querySelectorAll('.theme-icon-sun').forEach(el => el.classList.toggle('hidden', theme !== 'light'));
+            localStorage.setItem('omniverseTheme', theme);
+        }
+
+        document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme') || 'dark';
+                applyTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        });
+
+        applyTheme(document.documentElement.getAttribute('data-theme') || 'dark');
     </script>
 </body>
 
